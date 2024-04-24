@@ -1,0 +1,277 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Global Settings */
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    outline: none;
+    list-style: none;
+    text-decoration: none;
+}
+
+/* Variables backgrounds */
+:root{
+    --bg_black_100: rgba(31, 31, 31, 0.9);
+    --bg_white_100: #ddd;
+    --bg_white_50: #eff0f4;
+    --bg_white_25: #f5f5f5;
+    --bg_white_10: #f5f5f5;
+    --text_black_900: #000;
+    --text_black_700: rgb(37, 37, 37);
+    --text_black_600: rgb(172, 172, 172);
+    --text_black_400: rgb(221, 221, 221);
+    --text_black_300: #f5f5f5;
+    --shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+/* Dasar atau body */
+body{
+    font-size: 16px;
+    line-height: 1.5;
+    min-height: 1000vh;
+}
+:before,:after{
+    box-sizing: border-box;
+}
+img{
+    width: 100%;
+}
+.container{
+    max-width: 1140px;
+    margin: auto;
+}
+.raw{
+    display: flex;
+    flex-wrap: wrap;
+}
+.titleText, h2{
+    color: var(--text_black_900);
+    font-size: 2em;
+    font-weight: 300;
+
+    span{
+        color: var(--text_black_700);
+        font-weight: 700;
+        font-size: 1.5em;
+    }
+}
+.title{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* Bar Navigasi */
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 100px;
+    z-index: 100000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: .5s;
+    
+    /* bar otomatis ketika turun */
+    &.sticky{ 
+        background: var(--bg_white_10);
+        padding: 10px 100px;
+        box-shadow: var(--shadow);
+
+        .logo{
+            color: var(--text_black_900);
+        }
+
+        .nav{
+
+            moveLink{
+
+                a{
+                    color: var(--text_black_900);
+                }
+            }
+        }
+    }
+
+    .logo{
+        color: var(--text_black_700);
+        font-weight: 700;
+        font-size: 2em;
+        text-decoration: none;
+    }
+    .nav{
+        position: relative;
+        display: flex;
+
+        moveLink{
+            margin: 0 0 0 30px;
+            a{
+                color: var(--text_black_600);
+                font-weight: 300;
+                &:hover{
+                    color: var(--text_black_900);
+                }
+            }
+        }
+    }
+}
+
+/* button */
+.btn-1{
+    font-size: 16px;
+    color: var(--text_black_300);
+    background-color: var(--text_black_700);
+    display: inline-block;
+    padding: 10px 30px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    transition: .5s;
+    border-radius: 5px;
+}
+
+/* landing page */
+.beranda{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background: url(bg-3.jpg);
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+
+    .content{
+        max-width: 900px;
+        text-align: center;
+
+        h2{
+            font-size: 5em;
+            font-weight: 400;
+            color: var(--text_black_900);
+        }
+        p{
+            font-size: 1em;
+            font-weight: 500;
+            color: var(--text_black_700);
+        }
+    }
+}
+/* tampilan about */
+.about{
+    padding: auto;
+    min-height: 60vh;
+
+    .row{
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex: 0 0 50%;
+        padding: 15px;
+        justify-content: space-between;
+        margin-top: 50px;
+
+        /* &:nth-child(even){
+            flex-direction: row-reverse;
+        } */
+
+        /* .col50{
+            position: relative;
+            width: 48%;
+
+            .imgBx{
+                position: absolute;
+                height: 100%;
+
+                img{
+                    position: absolute;
+                    height: 100%;
+                }
+            }
+        } */
+    }
+}
+.layanan{
+    padding: auto;
+    min-height: 100vh;
+
+    .container{
+        .title{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .menu{
+            justify-content: center;
+            align-items: center;
+            padding: 20px 0 0;
+            position: relative;
+            display: grid;
+            max-width: 100%;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            
+
+            .row{
+                background: white;
+                position: relative;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+
+                .card{
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    position: relative;
+                    background: white;
+                    margin: 20px;
+                    box-shadow: 0 5px 35px rgba(0,0,0,0.08);
+                    transition: .5s;
+
+                    .boxcard{
+                        width: 340px;
+                        border: 15px solid var(--bg_white_10);
+                        box-shadow: var(--shadow);
+                        background-color: var(--bg_white_10);
+
+                        .imgBx{
+                            position: relative;
+                            width: 100%;
+                            height: 300px;
+
+                            img{
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                            }
+                        }
+                        .text{
+                            padding: 15px 0 5px;
+                            display: flex;
+                            overflow: hidden;
+
+                            h3{
+                                font-weight: 400;
+                                color: #111;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
