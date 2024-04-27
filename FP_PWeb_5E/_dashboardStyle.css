@@ -32,7 +32,6 @@
 body{
     font-size: 16px;
     line-height: 1.5;
-    min-height: 1000vh;
 }
 :before,:after{
     box-sizing: border-box;
@@ -92,10 +91,18 @@ header{
 
         .nav{
 
-            moveLink{
+            li{
 
                 a{
                     color: var(--text_black_900);
+                }
+                .btnMasuk2{
+                    color: black;
+                    background-color: white;
+                }
+                .btnDaftar{
+                    color: black;
+                    background-color: white;
                 }
             }
         }
@@ -111,8 +118,8 @@ header{
         position: relative;
         display: flex;
 
-        moveLink{
-            margin: 0 0 0 30px;
+        li{
+            margin: 0 0 0 25px;
             a{
                 color: var(--text_black_600);
                 font-weight: 300;
@@ -120,12 +127,26 @@ header{
                     color: var(--text_black_900);
                 }
             }
+            .btnMasuk2{
+                color: var(--text_black_600);
+                &:hover{
+                    color: white;
+                    background-color: var(--text_black_900);
+                }
+            }
+            .btnDaftar{
+                color: var(--text_black_600);
+                &:hover{
+                    color: white;
+                    background-color: var(--text_black_900);
+                }
+            }
         }
     }
 }
 
 /* button */
-.btn-1{
+.btnMasuk{
     font-size: 16px;
     color: var(--text_black_300);
     background-color: var(--text_black_700);
@@ -135,6 +156,26 @@ header{
     text-transform: uppercase;
     transition: .5s;
     border-radius: 5px;
+}
+
+.btnMasuk2{
+    color: var(--text_black_300);
+    background-color: white;
+    display: inline-block;
+    padding: 0 10px;
+    transition: .5s;
+    border-radius: 50px;
+    border: solid;
+}
+
+.btnDaftar{
+    color: var(--text_black_300);
+    background-color: white;
+    display: inline-block;
+    padding: 0px 10px;
+    transition: .5s;
+    border-radius: 50px;
+    border: solid;
 }
 
 /* landing page */
@@ -166,8 +207,8 @@ header{
 }
 /* tampilan about */
 .about{
-    padding: auto;
-    min-height: 60vh;
+    padding: 80px 0 80px;
+    min-height: 100vh;
 
     .row{
         position: relative;
@@ -177,29 +218,10 @@ header{
         padding: 15px;
         justify-content: space-between;
         margin-top: 50px;
-
-        /* &:nth-child(even){
-            flex-direction: row-reverse;
-        } */
-
-        /* .col50{
-            position: relative;
-            width: 48%;
-
-            .imgBx{
-                position: absolute;
-                height: 100%;
-
-                img{
-                    position: absolute;
-                    height: 100%;
-                }
-            }
-        } */
     }
 }
 .layanan{
-    padding: auto;
+    padding: 80px 0 80px;
     min-height: 100vh;
 
     .container{
@@ -263,6 +285,7 @@ header{
                             padding: 15px 0 5px;
                             display: flex;
                             overflow: hidden;
+                            justify-content: center;
 
                             h3{
                                 font-weight: 400;
@@ -271,6 +294,109 @@ header{
                         }
                     }
                 }
+            }
+        }
+    }
+}
+
+/* Contact Us */
+.kontak{
+    padding: 80px 0 80px;
+    min-height: 100vh;
+    background: black;
+    
+    h2{
+        color: white;
+        span{
+            color: white;
+        }
+    }
+
+    .box{
+        margin: 50px 0 0;
+        display: flex;
+        flex: 0 0 50%;
+        padding: 15px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        .kontakForm{
+            border-radius: 10px;
+            padding: 40px;
+            background: var(--bg_white_10);
+            box-shadow: var(--shadow);
+            width: 40%;
+
+            h3{
+                color: black;
+                font-size: 1.2em;
+                margin-bottom: 20px;
+                font-weight: 500;
+            }
+
+            .inputBox{
+                position: relative;
+                width: 100%;
+                margin-bottom: 20px;
+
+                input,textarea{
+                    width: 100%;
+                    background: var(--bg_white_10);
+                    border-radius: 5px;
+                    border: 1px solid var(--bg_black_100);
+                    padding: 10px;
+                    color: var(--text_black_900);
+                    outline: none;
+                    font-size: 16px;
+                    font-weight: 300;
+                    resize: none;
+                    
+                }
+
+                input[type="submit"]{
+                    font-size: 1em;
+                    color: white;
+                    background: black;
+                    display: inline-block;
+                    text-transform: uppercase;
+                    text-decoration: none;
+                    letter-spacing: 2px;
+                    transition: .5s;
+                    max-width: 100px;
+                    font-weight: 500;
+                    border: none;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .map{
+            position: relative;
+            height: 400;
+            width: 50%; 
+            box-shadow: var(--shadow);
+            background: black;
+            border-radius: 10px;
+            color: white;
+
+            span{
+                font-size: 1rem;
+                font-weight: 600;
+            }
+
+            p{
+                font-size: 1rem;
+                justify-content: left;
+                align-items: left;
+            }
+
+            iframe{
+                width: 100%;
+                height: 250px;
+                box-shadow: var(--shadow);
+                border: 0;
+                border-radius: 5px;
             }
         }
     }
