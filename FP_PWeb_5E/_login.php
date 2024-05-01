@@ -15,10 +15,10 @@
                         <div class="panel-body">    
                             <div class="form-group">
                                 <label>Login sebagai?</label><br/>
-                                <a href="./loginAdmin.php" type="button" class="btn btn-primary" name="lgnCust">Customer</a>
-                                <a href="./loginAdmin.php" type="button" class="btn btn-primary" name="lgnCust">Admin</a>
-                                <a href="./loginAdmin.php" type="button" class="btn btn-primary" name="lgnCust">Owner</a><br/><br/>
-                                <a href="./_dashboard.php">Kembali</a>
+                                <a href="./Admin/loginAdmin.php" type="button" class="btn btn-primary" name="lgnCust">Customer</a>
+                                <a href="./Admin/loginAdmin.php" type="button" class="btn btn-primary" name="lgnCust">Admin</a>
+                                <a href="./Admin/loginAdmin.php" type="button" class="btn btn-primary" name="lgnCust">Owner</a><br/><br/>
+                                <a href="./index.php">Kembali</a>
                             </div>
                         </div>
                     </div>

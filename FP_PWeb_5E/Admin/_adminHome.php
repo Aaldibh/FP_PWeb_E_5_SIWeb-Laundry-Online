@@ -16,6 +16,6 @@
 
         <h4>Selamat Datang, <?php echo $_SESSION['username']; ?>! anda telah login.</h4>
         <p>Selamat Datang di Halaman Admin</p><br>
-        <a href="../_dashboard.php">Logout</a><br>
+        <a href="../index.php">Logout</a><br>
     </body>
 </html>

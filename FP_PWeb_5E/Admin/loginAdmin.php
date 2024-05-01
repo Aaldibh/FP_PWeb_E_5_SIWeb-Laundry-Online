@@ -4,7 +4,7 @@
 <?php
 session_start();
 
-include_once("loginAction.php");
+include_once("../loginAction.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = loginAs_Admin($username, $password);
 
     if ($result == "success") {
-        header("location:./areaAdmin/_adminHome.php");
+        header("location:./_adminHome.php");
     } else if($result == "failed"){
         header("location:./loginAdmin.php?pesan=gagal");
     } else if ($result == "null"){
@@ -26,9 +26,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
     <head>
         <title>Smart Laundry</title>
-        <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.css">
-        <script type="text/javascript" src="./assets/js/Jquery.js"></script>
-        <script type="text/javascript" src="./assets/js/bootstrap.js"></script>
+        <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
+        <script type="text/javascript" src="../assets/js/Jquery.js"></script>
+        <script type="text/javascript" src="../assets/js/bootstrap.js"></script>
     </head>
 
     <body style="background: white;">
@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <label>Password</label>
                                 <input type="password" class="form-control" name="password">
                             </div>
-                            <a href="./_dashboard.php" type ="button" class="btn btn-primary">Kembali</a>
+                            <a href="../index.php" type ="button" class="btn btn-primary">Kembali</a>
                             <input type="submit" class="btn btn-primary" value="Masuk">
                             
                         </div>
