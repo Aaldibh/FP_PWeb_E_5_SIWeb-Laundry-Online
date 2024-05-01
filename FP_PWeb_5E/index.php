@@ -71,7 +71,7 @@
                         <div class="card">
                             <div class="boxcard">
                                 <div class="imgBx">
-                                    <img src="./delivery2.jpg" alt="">
+                                    <img src="./assets/gambar/delivery2.jpg" alt="">
                                 </div>
                                 <div class="text">
                                     <h3>Delivery</h3>
@@ -85,7 +85,7 @@
                         <div class="card">
                             <div class="boxcard">
                                 <div class="imgBx">
-                                    <img src="./drycleaning.jpg" alt="">
+                                    <img src="./assets/gambar/drycleaning.jpg" alt="">
                                 </div>
                                 <div class="text">
                                     <h3>Dry Cleaning</h3>
@@ -99,7 +99,7 @@
                         <div class="card">
                             <div class="boxcard">
                                 <div class="imgBx">
-                                    <img src="./onlineservice.jpg" alt="">
+                                    <img src="./assets/gambar/onlineservice.jpg" alt="">
                                 </div>
                                 <div class="text">
                                     <h3>Layanan Online</h3>

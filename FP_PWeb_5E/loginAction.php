@@ -4,7 +4,7 @@
 function loginAs_Admin($username, $password){
     include_once ("koneksi.php");
 
-    $dataAdmin = mysqli_query($koneksi,"select * from admin where namaAdmin='$username' and passwordAdmin='$password'");
+    $dataAdmin = mysqli_query($koneksi,"select * from tb_admin where namaAdmin='$username' and passwordAdmin='$password'");
     $cekAdmin = mysqli_num_rows($dataAdmin);
 
     if(empty($username) || empty($password)){
@@ -28,9 +28,45 @@ function loginAs_Admin($username, $password){
 // $username = $_POST['username'];
 // $password = $_POST['password'];
 
+function loginAs_Owner($username, $password){
+    include_once ("koneksi.php");
 
+    $dataOwner = mysqli_query($koneksi,"select * from tb_owner where namaOwner='$username' and passwordOwner='$password'");
+    $cekOwner = mysqli_num_rows($dataOwner);
 
+    if(empty($username) || empty($password)){
+        return "null";
 
+    }else{
+        if($cekOwner > 0){
+            $_SESSION['username'] = $username;
+            $_SESSION['status'] = "login";
+            return "success";
 
+        }else{
+            return "failed";
+        }
+    }
+}
 
+function loginAs_Cust($username, $password){
+    include_once ("koneksi.php");
+
+    $dataOwner = mysqli_query($koneksi,"select * from tb_customer where namaCust='$username' and passwordCust='$password'");
+    $cekOwner = mysqli_num_rows($dataOwner);
+
+    if(empty($username) || empty($password)){
+        return "null";
+
+    }else{
+        if($cekOwner > 0){
+            $_SESSION['username'] = $username;
+            $_SESSION['status'] = "login";
+            return "success";
+
+        }else{
+            return "failed";
+        }
+    }
+}
 ?>

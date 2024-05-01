@@ -183,7 +183,7 @@ header{
     position: relative;
     width: 100%;
     min-height: 100vh;
-    background: url(bg-3.jpg);
+    background: url(./assets/gambar/bg-3.jpg);
     background-size: cover;
     align-items: center;
     justify-content: center;
