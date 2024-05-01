@@ -9,8 +9,21 @@
 
     <body style="background: white;">
         <div class="container">
-            
+            <div class="col-md-4 col-md-offset-4">
+                <form method="post">
+                    <div class="panel">
+                        <div class="panel-body">    
+                            <div class="form-group">
+                                <label>Login sebagai?</label><br/>
+                                <a href="./loginAdmin.php" type="button" class="btn btn-primary" name="lgnCust">Customer</a>
+                                <a href="./loginAdmin.php" type="button" class="btn btn-primary" name="lgnCust">Admin</a>
+                                <a href="./loginAdmin.php" type="button" class="btn btn-primary" name="lgnCust">Owner</a><br/><br/>
+                                <a href="./_dashboard.php">Kembali</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
-
     </body>
 </html>

@@ -401,3 +401,67 @@ header{
         }
     }
 }
+
+/* Tampilan web untuk laptop
+@media (max-width: 991px){
+    header, header.sticky{
+        padding: 10px 30px;
+
+        .nav{
+
+            &.active{
+                li{
+                    a{
+                        color: var(--text_black_900);
+                        font-size: 20px;
+                        font-weight: 500;
+                        transition: all .5s ease;
+
+                        &.hover{
+                            color: var(--text_black_600);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    header{
+        .menuToggle{
+            position: relative;
+            width: 40px;
+            height: 40px;
+            background: black;
+        }
+    }
+    header.sticky{
+        .menuToggle{
+            background: red;
+
+        }
+    }
+
+    header{
+        .nav{
+            top: 0;
+            left: 0;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            background: var(--bg_white_10);
+            position: fixed;
+            height: 100%;
+            width: 100%;
+            transform: translateX(1000px);
+            transition: all .5s ease;
+
+            /* &.active{
+                transform: translateX(0px);
+                transform-origin: left;
+            }
+            li{
+                
+            } 
+        }
+    }
+} */
