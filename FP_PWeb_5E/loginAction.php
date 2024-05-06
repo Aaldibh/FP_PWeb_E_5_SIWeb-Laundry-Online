@@ -25,9 +25,6 @@ function loginAs_Admin($username, $password){
     }
 }
 
-// $username = $_POST['username'];
-// $password = $_POST['password'];
-
 function loginAs_Owner($username, $password){
     include_once ("koneksi.php");
 
