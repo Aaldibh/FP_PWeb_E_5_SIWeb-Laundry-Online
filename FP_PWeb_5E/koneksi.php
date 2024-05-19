@@ -5,4 +5,28 @@
         echo "Koneksi database gagal : " . mysqli_connect_error();
     }
 
+//tampil data layanan
+function insertDataAdmin(){
+    global $koneksi;
+    $query = "SELECT * FROM tb_admin";
+    $hasil = mysqli_query($koneksi, $query);
+    return $hasil;
+}
+
+function insertDataCustomer(){
+    global $koneksi;
+    $query = "SELECT * FROM tb_customer";
+    $hasil = mysqli_query($koneksi, $query);
+    return $hasil;
+}
+
+function insertDataLayanan(){
+    global $koneksi;
+    $query = "SELECT * FROM tb_layanan";
+    $hasil = mysqli_query($koneksi, $query);
+    return $hasil;
+}
+
 ?>
+
+

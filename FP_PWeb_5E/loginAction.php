@@ -9,18 +9,14 @@ function loginAs_Admin($username, $password){
 
     if(empty($username) || empty($password)){
         return "null";
-    // header("location:./loginAdmin.php?pesan=null");
-    // exit();
     }else{
         if($cekAdmin > 0){
             $_SESSION['username'] = $username;
             $_SESSION['status'] = "login";
-            // header("location:./areaAdmin/_adminHome.php");
             return "success";
 
         }else{
             return "failed";
-            // header("location:./loginAdmin.php?pesan=gagal");
         }
     }
 }
@@ -64,6 +60,27 @@ function loginAs_Cust($username, $password){
         }else{
             return "failed";
         }
+    }
+}
+
+// ini punya login atau daftar akunnnnnnnnn
+function signUp(){
+    include_once("./koneksi.php");
+
+    $nama = $_POST['nama'];
+    $alamat = $_POST['alamat'];
+    $telepon = $_POST['telepon'];
+    $email = $_POST['email'];
+    $gender = $_POST['gender'];
+    $password = $_POST['password'];
+
+    $query = "insert into tb_customer (namaCust, alamatCust, teleponCust, emailCust, genderCust, statusCust, passwordCust) Value ('$nama', '$alamat', '$telepon', '$email', '$gender', 'Not Member', '$password')";
+    $hasil = mysqli_query($koneksi, $query);
+
+    if($hasil){
+        header('location:./_login.php');
+    }else{
+        echo "Input data gagal!";
     }
 }
 ?>

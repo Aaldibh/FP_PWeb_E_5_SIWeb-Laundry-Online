@@ -4,12 +4,12 @@
 <html lang="en">
     <head>
         <title>Smart Laundry</title>
-        <link rel="stylesheet" href="<?='_dashboardStyle.css'?>">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="_dashboardStyle.css">
+        <link rel="stylesheet" href="./assets/bootstrap-5.3.3-examples/features/features.css">
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <script src="./bootstrap-5.3.3-dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+        <link href="./bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <script src="./bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </head>
     
     <body>
@@ -23,7 +23,7 @@
                 <li><a class="nav-link" href="#layanan">Layanan</a></li>
                 <li><a class="nav-link" href="#kontak">Kontak</a></li>
 
-                <li><a href="_login.php" type="button" class="btnDaftar" style="text-decoration: none;">Daftar</a></li>
+                <li><a href="_signUp.php" type="button" class="btnDaftar" style="text-decoration: none;">Daftar</a></li>
                 <li><div class="btn-group">
                     <a href="./_login.php" type="button" class="btnMasuk2" style="text-decoration: none;">Masuk</a>
                     <button  type="button" class="btnMasuk2 btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
@@ -53,13 +53,11 @@
 
         <!-- About Section -->
         <section class="about" id="about">
-            <div class="container">
+            <div class="container px-4 py-5">
                 <!-- item about -->
-                <div class="row">
-                    <div class="col50">
-                        <div class="titleText">
-                            <span>T</span>entang Kami
-                        </div>
+                <h2 class="pb-2 border-bottom"><span>T</span>entang Kami</h2>
+                <div class="row align-items-md-center">
+
                         <p>Sistem informasi laundry berbasis web merupakan platform digital yang dirancang untuk mencapai SDGs nomor 9, 
                             yaitu meningkatkan infrastruktur yang tangguh, mempromosikan industrialisasi yang inklusif dan berkelanjutan, 
                             dan mendorong inovasi. Aplikasi ini dapat membantu meningkatkan infrastruktur digital dan teknologi di industri 
@@ -70,60 +68,64 @@
                             menyediakan fitur yang berguna untuk pengusaha laundry seperti rekapitulasi data, dan juga fitur lainnya yang dapat 
                             membantu pengusaha laundry dalam mengelola usahanya dengan lebih mudah dan efisien. Project ini diharapkan dapat 
                             menghasilkan sistem informasi laundry berbasis web yang bermanfaat bagi pengusaha laundry dan juga pelanggannya. </p>
-                    </div>
+                    
                 </div>
             </div>
         </section>
 
         <!-- Layanan -->
         <section class="layanan" id="layanan">
-            <div class="container">
-                <div class="title">
-                    <h2 class="titleText"><span>L</span>ayanan Kami</h2>
-                    <p> Smart Laundri menyajikan beberapa layanan yang dapat membantu Anda untuk mencuci pakaian</p>
+            <div class="container px-4 py-5">
+                <h2 class="pb-2 border-bottom">Layanan <span>K</span>ami</h2>
+
+                <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
+                <div class="col d-flex flex-column align-items-start gap-2">
+                    <h2 class="fw-bold text-body-emphasis">Banyak Pilihan Layanan</h2>
+                    <p class="text-body-secondary">Smart laundry menawarkan banyak layanan untuk Anda loh!!!</p>
+                    <a href="#" class="btn btn-primary btn-lg">Mulai</a>
                 </div>
-                <div class="menu">
-                    <div class="row">
-                        <div class="card">
-                            <div class="boxcard">
-                                <div class="imgBx">
-                                    <img src="./assets/gambar/delivery2.jpg" alt="">
-                                </div>
-                                <div class="text">
-                                    <h3>Delivery</h3>
-                                </div>
-                                
-                            </div>
+
+                <div class="col">
+                    <div class="row row-cols-1 row-cols-sm-2 g-4">
+                    <div class="col d-flex flex-column gap-2">
+                        <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+                            <img src="./assets/bootstrap-icons-1.11.0/truck-white.svg" style="margin:5px;">
                         </div>
+                        <h4 class="fw-semibold mb-0 text-body-emphasis">Laundry Delivery</h4>
+                        <p class="text-body-secondary">Nge-laundry sambil rebahan, ga perlu datang ke tempat laundy guys!.</p>
                     </div>
 
-                    <div class="row">
-                        <div class="card">
-                            <div class="boxcard">
-                                <div class="imgBx">
-                                    <img src="./assets/gambar/drycleaning.jpg" alt="">
-                                </div>
-                                <div class="text">
-                                    <h3>Dry Cleaning</h3>
-                                </div>
-                                
-                            </div>
+                    <div class="col d-flex flex-column gap-2">
+                        <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+                        <svg class="bi" width="1em" height="1em">
+                            <use xlink:href="#gear-fill" />
+                        </svg>
                         </div>
+                        <h4 class="fw-semibold mb-0 text-body-emphasis">Cuci Setrika</h4>
+                        <p class="text-body-secondary">Paragraph of text beneath the heading to explain the heading.</p>
                     </div>
 
-                    <div class="row">
-                        <div class="card">
-                            <div class="boxcard">
-                                <div class="imgBx">
-                                    <img src="./assets/gambar/onlineservice.jpg" alt="">
-                                </div>
-                                <div class="text">
-                                    <h3>Layanan Online</h3>
-                                </div>
-                                
-                            </div>
+                    <div class="col d-flex flex-column gap-2">
+                        <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+                        <svg class="bi" width="1em" height="1em">
+                            <use xlink:href="#speedometer" />
+                        </svg>
                         </div>
+                        <h4 class="fw-semibold mb-0 text-body-emphasis">Cuci Basah</h4>
+                        <p class="text-body-secondary">Paragraph of text beneath the heading to explain the heading.</p>
                     </div>
+
+                    <div class="col d-flex flex-column gap-2">
+                        <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+                        <svg class="bi" width="1em" height="1em">
+                            <use xlink:href="#table" />
+                        </svg>
+                        </div>
+                        <h4 class="fw-semibold mb-0 text-body-emphasis">Cuci Kering</h4>
+                        <p class="text-body-secondary">Paragraph of text beneath the heading to explain the heading.</p>
+                    </div>
+                    </div>
+                </div>
                 </div>
             </div>
         </section>
@@ -177,7 +179,6 @@
                 </div>
             </div>
         </section>
-
         <!-- Copyright -->
         
         <script src="LaundryAppJS.js"></script>
