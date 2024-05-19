@@ -1,4 +1,4 @@
-<!-- Daftar Customer -->
+<!-- HALAMAN DAFTAR CUSTOMER -->
 
 <?php
 session_start();
@@ -52,8 +52,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             background-color: #fff; /* Warna latar belakang kontainer */
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Efek bayangan */
-            /* display: flex;
-            flex-direction: column-reverse; */
             align-items: center;
         }   
     </style>
@@ -61,51 +59,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <body>
         <div class="row container">
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-                <!-- <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5"> -->
-                    <!-- <div class="panel-body">     -->
-                        <div class="form-group">
+                <div class="form-group">
 
-                            <h1 class="h2">DAFTAR AKUN</h1>
-                            <p>Belum punya akun nih? daftar dulu gih, isi yang lengkap ya...</p></br>
+                    <h1 class="h2">DAFTAR AKUN</h1>
+                    <p>Belum punya akun nih? daftar dulu gih, isi yang lengkap ya...</p></br>
 
-                            <div class="row row-cols-1 row-cols-md-2 align-items-md-center5">
-                            <div class="mb-3">
-                                <label for="namaInput" class="h6 form-label">Nama Lengkap</label>
-                                <input type="text" class="form-control" name="nama" placeholder="Masukkan nama lengkap" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="alamatInput" class="h6 form-label">Alamat</label>
-                                <input type="text" class="form-control" name="alamat" placeholder="Masukkan alamat tempat tinggal" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="teleponInput" class="h6 form-label">Telepon</label>
-                                <input type="text" class="form-control" name="telepon" placeholder="Masukkan nomor telepon aktif" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="emailInput" class="h6 form-label">Email</label>
-                                <input type="email" class="form-control" name="email" placeholder="Masukkan email" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="genderInput" class="h6 form-label">Gender</label>
-                                <select class="form-control" name="gender" required>
-                                    <option value="Male">Laki-laki</option>
-                                    <option value="Female">Perempuan</option>
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="passwordInput" class="h6 form-label">Password</label>
-                                <input type="password" class="form-control" name="password" placeholder="Buat password" required>
-                            </div>
-                            </div>
-
-                            <br><div class="col modal-footer">
-                            <a  href="./index.php" type="button" class="btn btn-secondary" style="margin-right: auto;">Batal</a>
-                            <button  type="submit" class="btn btn-primary" style="margin-left: auto;">Daftar</button>
+                    <div class="row row-cols-1 row-cols-md-2 align-items-md-center5">
+                        <div class="mb-3">
+                            <label for="namaInput" class="h6 form-label">Nama Lengkap</label>
+                            <input type="text" class="form-control" name="nama" placeholder="Masukkan nama lengkap" required>
                         </div>
+                        <div class="mb-3">
+                            <label for="alamatInput" class="h6 form-label">Alamat</label>
+                            <input type="text" class="form-control" name="alamat" placeholder="Masukkan alamat tempat tinggal" required> 
                         </div>
-                        
-                    <!-- </div> -->
-                <!-- </div> -->
+                        <div class="mb-3">
+                            <label for="teleponInput" class="h6 form-label">Telepon</label>
+                            <input type="text" class="form-control" name="telepon" placeholder="Masukkan nomor telepon aktif" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="emailInput" class="h6 form-label">Email</label>
+                            <input type="email" class="form-control" name="email" placeholder="Masukkan email" required>
+                        </div>
+                        <div class="mb-3">                                
+                            <label for="genderInput" class="h6 form-label">Gender</label>
+                            <select class="form-control" name="gender" required>
+                                <option value="Male">Laki-laki</option>
+                                <option value="Female">Perempuan</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="passwordInput" class="h6 form-label">Password</label>
+                            <input type="password" class="form-control" name="password" placeholder="Buat password" required>
+                        </div>
+                    </div>
+
+                    <br><div class="col modal-footer">
+                        <a  href="./index.php" type="button" class="btn btn-secondary" style="margin-right: auto;">Batal</a>
+                        <button  type="submit" class="btn btn-primary" style="margin-left: auto;">Daftar</button>
+                    </div>
+                </div>
             </form>
         </div>
     </body>

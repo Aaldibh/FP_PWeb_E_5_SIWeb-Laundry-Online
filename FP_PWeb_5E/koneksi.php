@@ -27,6 +27,20 @@ function insertDataLayanan(){
     return $hasil;
 }
 
+function insertDataPegawai(){
+    global $koneksi;
+    $query = "SELECT * FROM tb_pegawai";
+    $hasil = mysqli_query($koneksi, $query);
+    return $hasil;
+}
+
+function insertDataTransaksi(){
+    global $koneksi;
+    $query = "SELECT * FROM tb_transaksi";
+    $hasil = mysqli_query($koneksi, $query);
+    return $hasil;
+}
+
 ?>
 
 

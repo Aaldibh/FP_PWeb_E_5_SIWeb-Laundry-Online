@@ -1,4 +1,5 @@
 <!-- Halaman Owner -->
+
 <?php
 session_start();
 
@@ -324,7 +325,6 @@ include_once("./functionOperasionalOwner.php");
                                         <tr>
                                             <th scope="col">No.</th>
                                             <th scope="col">Layanan</th>
-                                            <th scope="col">Jenis Paket</th>
                                             <th scope="col">Harga</th>
                                             <th scope="coll">Aksi</th>
                                         </tr>
@@ -340,7 +340,6 @@ include_once("./functionOperasionalOwner.php");
                                                 </th>
 
                                                 <td> <?php echo $data['nama_layanan']; ?></td>
-                                                <td> <?php echo $data['jenis_paket']; ?></td>
                                                 <td> <?php echo $data['harga_layanan']; ?></td>
 
                                                 <!--button aksi-->
