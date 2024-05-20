@@ -380,15 +380,17 @@ include_once("./functionOperationAdmin.php");
                             <!-- page absensi pegawai -->
                             <div id="dataPegawaiContent">
                                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                                    <h1 class="h2">Absensi Pegawai</h1>
+                                    <h1 class="h2">Data Pegawai</h1>
                                     <div class="btn-toolbar mb-2 mb-md-0">
                                         <!-- button tambah layanan -->
-                                        <a href="#" class="btn btn-primary mb-3 mt-0 ml-3" data-bs-toggle="modal" data-bs-target="#modalTambahPegawai">
+                                        <a href="#" class="btn btn-primary mb-3 mt-0 ml-3" style="margin-right: 20px;" data-bs-toggle="modal" data-bs-target="#modalTambahPegawai">
                                             <i class="bi bi-clipboard2-plus-fill"></i>
                                             <i class="fas fa-user-plus"></i>Tambah
                                         </a>
                                         <!-- pop up untuk memasukan inputan tambah layanan -->
                                         <?php popupTambahPegawai(); ?>
+                                        <a href="reportDataKaryawan_PDF.php" target="_blank" class="btn btn-success mb-3 mt-0 ml-3"><i class="fa fa-file-pdf-o"></i>Cetak</a>
+                                       
                                     </div>
                                 </div>
 
@@ -405,6 +407,7 @@ include_once("./functionOperationAdmin.php");
                                             <th scope="coll">Absensi</th>
                                             <th scope="coll">Jumlah Absensi</th>
                                             <th scope="coll">Keterangan</th>
+                                            <th scope="coll">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -434,18 +437,25 @@ include_once("./functionOperationAdmin.php");
 
                                                 <td> <?php echo $data['jmlAbsen_pegawai']; ?></td>
                                                 
-                                                 <!--button aksi keterangan-->
+                                                 <!--button keterangan-->
                                                 <td style="text-align:center;"> 
-                                                    <a href="#" style="margin-right: 10px; margin-left: 10px;" data-bs-toggle="modal" data-bs-target="#modalEditAdmin_<?php echo $data['idAdmin']; ?>">
-                                                        <img src="../assets/bootstrap-icons-1.11.0/pencil-fill.svg">
+                                                    <a href="#" style="margin-right: 10px; margin-left: 10px;">
                                                         Detail
                                                     </a>
-                                                    <div id="detailContent">
-                                                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                                                            <h1 class="h2">Absensi Pegawai</h1>
-                                                        </div>
+                                                </td>
 
-                                                    </div>
+                                                <td style="text-align:center;"> 
+                                                    <a href="#" style="margin-right: 10px; margin-left: 10px;" data-bs-toggle="modal" data-bs-target="#modalEditpegawai_<?php echo $data['id_pegawai']; ?>">
+                                                        <img src="../assets/bootstrap-icons-1.11.0/pencil-fill.svg">
+                                                        Edit
+                                                    </a>
+                                                    <?php popupEditPegawai($koneksi, $data['id_pegawai']); ?>
+                                                    <label>|</label>
+                                                    <a href="#" style="margin-right: 10px; margin-left: 10px;" data-bs-toggle="modal" data-bs-target="#modalHapusPegawai_<?php echo $data['id_pegawai']; ?>">
+                                                        <img src="../assets/bootstrap-icons-1.11.0/trash-red.svg">
+                                                        Hapus
+                                                    </a>
+                                                    <?php popupHapus_Pegawai($koneksi, $data['id_pegawai']);?>
                                                 </td>
 
                                             </tr>
