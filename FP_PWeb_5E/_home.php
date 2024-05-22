@@ -7,6 +7,7 @@ include_once("./koneksi.php");
 if ($_SESSION['status'] != "login") {
     header("location:./_login.php?pesan=belum_login");
 }
+include_once("./_checkout/checkout.php");
 // include_once("./functionOperasionalOwner.php");
 ?>
 
@@ -145,11 +146,6 @@ if ($_SESSION['status'] != "login") {
     <header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="#">SELAMAT DATANG<br>Hai, <?php echo $_SESSION['username']; ?></a>
         <ul class="navbar-nav flex-row d-md-none">
-            <!-- <li class="nav-item text-nowrap">
-                <button class="nav-link px-3 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSearch" aria-controls="navbarSearch" aria-expanded="false" aria-label="Toggle search">
-                    <i class="bi bi-search" href="#search"></i>
-                </button>
-            </li> -->
 
             <li class="nav-item text-nowrap">
                 <button class="nav-link px-3 text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -158,16 +154,16 @@ if ($_SESSION['status'] != "login") {
             </li>
         </ul>
 
-        <div id="navbarSearch" class="navbar-search w-100 collapse">
-            <input class="form-control w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
-        </div>
+        <!-- <div id="navbarSearch" class="navbar-search w-100 collapse">
+                <input class="form-control w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
+            </div> -->
 
     </header>
 
     <!-- Navigasi bar -->
     <div class="container-fluid" style="max-width: 100%;">
         <div class="row">
-            <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
+            <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary" style="position: fixed;">
                 <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
 
                     <div class="offcanvas-header">
@@ -222,37 +218,38 @@ if ($_SESSION['status'] != "login") {
                         <h1 class="h2">NgeLaundry Lagi Yuk!</h1>
                     </div>
                     <div class="col">
-                        <a type="button" class="btn btn-light square-btn">
+                        <a type="button" class="btn btn-light square-btn" href="#" id="cuciBasahLink">
                             <div class="col d-flex flex-column gap-2">
                                 <img src="./assets/icon-laundry/cuci-basah.svg" style="margin:5px; width:50px; height:50px;">
                                 <h5 class="fw-semibold mb-0 text-body-emphasis">Cuci Basah</h5>
                                 <p class="text-body-secondary">Cuci bersih wangi, tapi belum kering dan ngga disetrika.</p>
                             </div>
                         </a>
-                        <a type="button" class="btn btn-light square-btn">
+                        <a type="button" class="btn btn-light square-btn" id="cuciKering">
                             <div class="col d-flex flex-column gap-2">
                                 <img src="./assets/icon-laundry/cuci-kering.svg" style="margin:5px; width:50px; height:50px;">
                                 <h5 class="fw-semibold mb-0 text-body-emphasis">Cuci Kering</h5>
                                 <p class="text-body-secondary">Cuci bersih, wangi, kering, dilipat, dan ngga disetrika.</p>
                             </div>
                         </a>
-                        <a type="button" class="btn btn-light square-btn">
+                        <a type="button" class="btn btn-light square-btn" id="cuciSetrika">
                             <div class="col d-flex flex-column gap-2">
                                 <img src="./assets/icon-laundry/cuci-setrika.svg" style="margin:5px; width:50px; height:50px;">
                                 <h5 class="fw-semibold mb-0 text-body-emphasis">Cuci Setrika</h5>
                                 <p class="text-body-secondary">Cuci bersih, wangi, dan disetrika</p>
                             </div>
                         </a>
-                        <a type="button" class="btn btn-light square-btn">
+                        <a type="button" class="btn btn-light square-btn" id="setrikaSaja">
                             <div class="col d-flex flex-column gap-2">
                                 <img src="./assets/icon-laundry/setrika-saja.svg" style="margin:5px; width:50px; height:50px;">
                                 <h5 class="fw-semibold mb-0 text-body-emphasis">Setrika Saja</h5>
-                                <p class="text-body-secondary">Udah nyuci banyak? Biar ngga capek, pakai layanan ini aja buat setrika cucianmu.</p>
+                                <p class="text-body-secondary mb-0">Udah nyuci banyak? Biar ngga capek, pakai layanan ini aja buat setrika cucianmu.</p>
                             </div>
                         </a>
                     </div>
-                    <!-- ??? -->
+
                 </div>
+                <?php checkOutContent() ?>
 
                 <!-- page riwayat transaksi -->
                 <div id="riwayatTransaksiContent">
@@ -315,13 +312,11 @@ if ($_SESSION['status'] != "login") {
             </main>
         </div>
     </div>
-    </div>
-    </div>
-</body>
 
-<script src="./bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js" integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous"></script>
-<script src="dashboard.js"></script>
+    <script src="./bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js" integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous"></script>
+    <!-- <script src="dashboard.js"></script> -->
+
 </body>
 <!-- Perpindahan navigasi dasboard owner -->
 <script src="./barNavCustomer.js"></script>
