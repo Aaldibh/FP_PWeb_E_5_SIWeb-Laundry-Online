@@ -1,5 +1,4 @@
 <!-- Halaman Customer -->
-
 <?php
 session_start();
 
@@ -7,8 +6,8 @@ include_once("./koneksi.php");
 if ($_SESSION['status'] != "login") {
     header("location:./_login.php?pesan=belum_login");
 }
-include_once("./_checkout/checkout.php");
-// include_once("./functionOperasionalOwner.php");
+include_once("./checkout.php");
+
 ?>
 
 <!doctype html>
@@ -22,7 +21,6 @@ include_once("./_checkout/checkout.php");
     <link rel="stylesheet" href="./assets/bootstrap-5.3.3-examples/features/features.css">
     <link href="./bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
-
 <style>
     .bd-placeholder-img {
         font-size: 1.125rem;
@@ -218,28 +216,28 @@ include_once("./_checkout/checkout.php");
                         <h1 class="h2">NgeLaundry Lagi Yuk!</h1>
                     </div>
                     <div class="col">
-                        <a type="button" class="btn btn-light square-btn" href="#" id="cuciBasahLink">
+                        <a type="button" class="btn btn-light square-btn layananLink" id="cuciBasahLink">
                             <div class="col d-flex flex-column gap-2">
                                 <img src="./assets/icon-laundry/cuci-basah.svg" style="margin:5px; width:50px; height:50px;">
                                 <h5 class="fw-semibold mb-0 text-body-emphasis">Cuci Basah</h5>
                                 <p class="text-body-secondary">Cuci bersih wangi, tapi belum kering dan ngga disetrika.</p>
                             </div>
                         </a>
-                        <a type="button" class="btn btn-light square-btn" id="cuciKering">
+                        <a type="button" class="btn btn-light square-btn layananLink" id="cuciKeringLink">
                             <div class="col d-flex flex-column gap-2">
                                 <img src="./assets/icon-laundry/cuci-kering.svg" style="margin:5px; width:50px; height:50px;">
                                 <h5 class="fw-semibold mb-0 text-body-emphasis">Cuci Kering</h5>
                                 <p class="text-body-secondary">Cuci bersih, wangi, kering, dilipat, dan ngga disetrika.</p>
                             </div>
                         </a>
-                        <a type="button" class="btn btn-light square-btn" id="cuciSetrika">
+                        <a type="button" class="btn btn-light square-btn layananLink" id="cuciSetrikaLink">
                             <div class="col d-flex flex-column gap-2">
                                 <img src="./assets/icon-laundry/cuci-setrika.svg" style="margin:5px; width:50px; height:50px;">
                                 <h5 class="fw-semibold mb-0 text-body-emphasis">Cuci Setrika</h5>
                                 <p class="text-body-secondary">Cuci bersih, wangi, dan disetrika</p>
                             </div>
                         </a>
-                        <a type="button" class="btn btn-light square-btn" id="setrikaSaja">
+                        <a type="button" class="btn btn-light square-btn layananLink" id="setrikaSajaLink">
                             <div class="col d-flex flex-column gap-2">
                                 <img src="./assets/icon-laundry/setrika-saja.svg" style="margin:5px; width:50px; height:50px;">
                                 <h5 class="fw-semibold mb-0 text-body-emphasis">Setrika Saja</h5>
@@ -285,7 +283,7 @@ include_once("./_checkout/checkout.php");
                         <tbody>
                             <?php
                             $nomor = 1;
-                            $hasilTransaksi = insertDataTransaksi();
+                            $hasilTransaksi = ambilDataTransaksi();
                             while ($data = mysqli_fetch_array($hasilTransaksi)) { ?>
                                 <tr>
                                     <th scope="row">

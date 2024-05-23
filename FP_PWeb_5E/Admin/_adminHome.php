@@ -255,7 +255,7 @@ include_once("./functionOperationAdmin.php");
                             <tbody>
                                 <?php
                                 $nomor = 1;
-                                $hasilTransaksi = insertDataTransaksi();
+                                $hasilTransaksi = ambilDataTransaksi();
                                 while ($data = mysqli_fetch_array($hasilTransaksi)) { ?>
                                     <tr>
                                         <th scope="row">
@@ -308,7 +308,7 @@ include_once("./functionOperationAdmin.php");
                             <tbody>
                                 <?php
                                 $nomor = 1;
-                                $hasilTransaksi = insertDataTransaksi();
+                                $hasilTransaksi = ambilDataTransaksi();
                                 while ($data = mysqli_fetch_array($hasilTransaksi)) { ?>
                                     <tr>
                                         <th scope="row">
@@ -360,7 +360,7 @@ include_once("./functionOperationAdmin.php");
                             <tbody>
                                 <?php
                                 $nomor = 1;
-                                $hasilTransaksi = insertDataTransaksi();
+                                $hasilTransaksi = ambilDataTransaksi();
                                 while ($data = mysqli_fetch_array($hasilTransaksi)) { ?>
                                     <tr>
                                         <th scope="row">
@@ -412,7 +412,7 @@ include_once("./functionOperationAdmin.php");
                             <tbody>
                                 <?php
                                 $nomor = 1;
-                                $hasilTransaksi = insertDataTransaksi();
+                                $hasilTransaksi = ambilDataTransaksi();
                                 while ($data = mysqli_fetch_array($hasilTransaksi)) { ?>
                                     <tr>
                                         <th scope="row">
@@ -477,7 +477,7 @@ include_once("./functionOperationAdmin.php");
                         <tbody>
                             <?php
                             $nomor = 1;
-                            $hasilTransaksi = insertDataTransaksi();
+                            $hasilTransaksi = ambilDataTransaksi();
                             while ($data = mysqli_fetch_array($hasilTransaksi)) { ?>
                                 <tr>
                                     <th scope="row">
@@ -536,7 +536,7 @@ include_once("./functionOperationAdmin.php");
                         <tbody>
                             <?php
                             $nomor = 1;
-                            $hasilCust = insertDataCustomer();
+                            $hasilCust = ambilDataCustomer();
                             while ($data = mysqli_fetch_array($hasilCust)) { ?>
                                 <tr>
                                     <th scope="row">
@@ -578,7 +578,7 @@ include_once("./functionOperationAdmin.php");
                         <tbody>
                             <?php
                             $nomor = 1;
-                            $hasilLayanan = insertDataLayanan();
+                            $hasilLayanan = ambilDataLayanan();
                             while ($data = mysqli_fetch_array($hasilLayanan)) { ?>
                                 <tr>
                                     <th scope="row">
@@ -633,7 +633,7 @@ include_once("./functionOperationAdmin.php");
                         <tbody>
                             <?php
                             $nomor = 1;
-                            $hasilPegawai = insertDataPegawai();
+                            $hasilPegawai = ambilDataPegawai();
                             while ($data = mysqli_fetch_array($hasilPegawai)) { ?>
                                 <tr>
                                     <th scope="row">
