@@ -222,16 +222,6 @@ include_once("./functionOperasionalOwner.php");
                 <div id="dataTransaksiContent">
                     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                         <h1 class="h2">Data Transaksi</h1>
-                        <div class="btn-toolbar mb-2 mb-md-0">
-                            <div class="btn-group me-2">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-                            </div>
-                            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1">
-                                <i class="bi bi-calendar3"></i>
-                                Minggu ini
-                            </button>
-                        </div>
                     </div>
 
                     <table class="table table-bordered">
@@ -239,14 +229,43 @@ include_once("./functionOperasionalOwner.php");
                             <tr>
                                 <th scope="col">No.</th>
                                 <th scope="col">ID Transaksi</th>
-                                <th scope="col">Nama Pelanggan</th>
-                                <th scope="col">Total Order</th>
-                                <th scope="col">Total Biaya</th>
-                                <th scope="col">Nama Admin</th>
-                                <th scope="col">Cabang</th>
-                                <th scope="col">Tanggal</th>
+                                <th scope="col">Nama Customer</th>
+                                <th scope="col">Layanan</th>
+                                <th scope="col">harga 1 Potong</th>
+                                <th scope="col">Jumlah</th>
+                                <th scope="col">Keterangan</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Bayar</th>
+                                <th scope="col">Status</th>
                             </tr>
                         </thead>
+
+                        <tbody>
+                            <?php
+                            $nomor = 1;
+                            $hasilTransaksi = ambilDataTransaksi();
+                            while ($data = mysqli_fetch_array($hasilTransaksi)) { ?>
+                                <tr>
+                                    <th scope="row">
+                                        <?php echo $nomor; ?>
+                                    </th>
+
+                                    <td> <?php echo $data['id_transaksi']; ?></td>
+                                    <td> <?php echo $data['nama_customer']; ?></td>
+                                    <td> <?php echo $data['layanan']; ?></td>
+                                    <td> <?php echo $data['harga_perItem']; ?></td>
+                                    <td> <?php echo $data['jumlah_item']; ?></td>
+                                    <td> <?php echo $data['keterangan']; ?></td>
+                                    <td> <?php echo $data['total_transaksi']; ?></td>
+                                    <td> <?php echo $data['total_bayar']; ?></td>
+                                    <td> <?php echo $data['status_transaksi']; ?></td>
+                                </tr>
+
+                            <?php
+                                $nomor++;
+                            }
+                            ?>
+                        </tbody>
                     </table>
                 </div>
 
@@ -254,16 +273,6 @@ include_once("./functionOperasionalOwner.php");
                 <div id="dataCustomerContent">
                     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                         <h1 class="h2">Data Customer</h1>
-                        <div class="btn-toolbar mb-2 mb-md-0">
-                            <div class="btn-group me-2">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-                            </div>
-                            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1">
-                                <i class="bi bi-calendar3"></i>
-                                Minggu ini
-                            </button>
-                        </div>
                     </div>
 
                     <table class="table table-bordered">

@@ -1,70 +1,70 @@
 <?php
 // session_start();
 
-function loginAs_Admin($username, $password){
-    include_once ("koneksi.php");
+function loginAs_Admin($username, $password)
+{
+    include_once("koneksi.php");
 
-    $dataAdmin = mysqli_query($koneksi,"select * from tb_admin where namaAdmin='$username' and passwordAdmin='$password'");
+    $dataAdmin = mysqli_query($koneksi, "select * from tb_admin where namaAdmin='$username' and passwordAdmin='$password'");
     $cekAdmin = mysqli_num_rows($dataAdmin);
 
-    if(empty($username) || empty($password)){
+    if (empty($username) || empty($password)) {
         return "null";
-    }else{
-        if($cekAdmin > 0){
+    } else {
+        if ($cekAdmin > 0) {
             $_SESSION['username'] = $username;
             $_SESSION['status'] = "login";
             return "success";
-
-        }else{
+        } else {
             return "failed";
         }
     }
 }
 
-function loginAs_Owner($username, $password){
-    include_once ("koneksi.php");
+function loginAs_Owner($username, $password)
+{
+    include_once("koneksi.php");
 
-    $dataOwner = mysqli_query($koneksi,"select * from tb_owner where namaOwner='$username' and passwordOwner='$password'");
+    $dataOwner = mysqli_query($koneksi, "select * from tb_owner where namaOwner='$username' and passwordOwner='$password'");
     $cekOwner = mysqli_num_rows($dataOwner);
 
-    if(empty($username) || empty($password)){
+    if (empty($username) || empty($password)) {
         return "null";
-
-    }else{
-        if($cekOwner > 0){
+    } else {
+        if ($cekOwner > 0) {
             $_SESSION['username'] = $username;
             $_SESSION['status'] = "login";
             return "success";
-
-        }else{
+        } else {
             return "failed";
         }
     }
 }
 
-function loginAs_Cust($username, $password){
-    include_once ("koneksi.php");
+function loginAs_Cust($ID, $password)
+{
+    include_once("koneksi.php");
 
-    $dataOwner = mysqli_query($koneksi,"select * from tb_customer where namaCust='$username' and passwordCust='$password'");
-    $cekOwner = mysqli_num_rows($dataOwner);
+    $dataCust = mysqli_query($koneksi, "select * from tb_customer where idCust='$ID' and passwordCust='$password'");
+    $cekCust = mysqli_num_rows($dataCust);
 
-    if(empty($username) || empty($password)){
+    if (empty($ID) || empty($password)) {
         return "null";
-
-    }else{
-        if($cekOwner > 0){
-            $_SESSION['username'] = $username;
+    } else {
+        if ($cekCust > 0) {
+            $_SESSION['idCust'] = $ID;
             $_SESSION['status'] = "login";
-            return "success";
 
-        }else{
+            return "success";
+        } else {
             return "failed";
         }
     }
 }
 
 // ini punya login atau daftar akunnnnnnnnn
-function signUp(){
+function signUp()
+{
     include_once("./koneksi.php");
 
     $nama = $_POST['nama'];
@@ -77,10 +77,9 @@ function signUp(){
     $query = "insert into tb_customer (namaCust, alamatCust, teleponCust, emailCust, genderCust, statusCust, passwordCust) Value ('$nama', '$alamat', '$telepon', '$email', '$gender', 'Not Member', '$password')";
     $hasil = mysqli_query($koneksi, $query);
 
-    if($hasil){
+    if ($hasil) {
         header('location:./_login.php');
-    }else{
+    } else {
         echo "Input data gagal!";
     }
 }
-?>
