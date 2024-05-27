@@ -26,7 +26,7 @@ $jumlahDiantar = mysqli_num_rows($hasilDiantar);
     <title>Smart Laundry</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="../bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="../bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <style>
@@ -589,8 +589,9 @@ $jumlahDiantar = mysqli_num_rows($hasilDiantar);
 </body>
 
 <script src="../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js" integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js"></script>
 <script src="dashboard.js"></script>
+
 </body>
 <!-- Perpindahan navigasi dasboard owner -->
 <Script src="./barStatusResponAdmin.js"></Script>
