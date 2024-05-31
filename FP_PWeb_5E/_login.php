@@ -111,8 +111,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="panel">
                 <div class="panel-body">
                     <div class="form-group">
+                        <h1 class="h3 mb-3 fw-normal"><a href="./index.php" style="margin-right: 10px; text-decoration:none;"><img src="./assets/bootstrap-icons-1.11.0/arrow-left-circle.svg" style="width: 24px; height:24px;">
+                            </a>
 
-                        <h1 class="h3 mb-3 fw-normal">Masuk Akun Customer</h1>
+                            Masuk Akun Customer</h1><br>
 
                         <div class="form-floating">
                             <input type="text" class="form-control" id="floatingInput" name="idCust" placeholder="Masukkan ID Akun">
@@ -122,12 +124,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="form-floating">
                             <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
                             <label for="floatingPassword">Password</label>
-                        </div>
-
-                        <div class="form-check text-start my-3">
-                            <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">Remember me</label>
-                        </div>
+                        </div><br><br>
 
                         <button class="btn btn-primary w-100 py-2" type="submit">Masuk</button><br>
                         <br><label>Belum punya akun? <a href="./_signUp.php">Daftar disini</a></label>

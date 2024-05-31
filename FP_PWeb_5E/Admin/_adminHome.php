@@ -8,6 +8,7 @@ if ($_SESSION['status'] != "login") {
 }
 include_once("./functionOperationAdmin.php");
 
+//ambil data transaksi sesuai status
 $hasilDiambil = ambilTransaksiFromStatus('diambil');
 $jumlahDiambil = mysqli_num_rows($hasilDiambil);
 
@@ -16,6 +17,10 @@ $jumlahDiproses = mysqli_num_rows($hasilDiproses);
 
 $hasilDiantar = ambilTransaksiFromStatus('diantar');
 $jumlahDiantar = mysqli_num_rows($hasilDiantar);
+
+// Simpan nilai inputan tanggal sebelum dan setelah proses filter
+$start_date_value = isset($_GET['start_date']) ? $_GET['start_date'] : '';
+$end_date_value = isset($_GET['end_date']) ? $_GET['end_date'] : '';
 
 ?>
 
@@ -434,10 +439,21 @@ $jumlahDiantar = mysqli_num_rows($hasilDiantar);
                     </div>
                 </div>
 
-                <!-- page data transaksi -->
+                <!-- KONTEN TRANSAKSI -->
                 <div id="dataTransaksiContent">
                     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                         <h1 class="h2">Daftar Transaksi</h1>
+                        <div class="btn-toolbar mb-2 mb-md-0">
+                            <form method="GET" class="d-flex align-items-center gap-1">
+                                <input type="date" name="start_date" class="form-control form-control-sm" value="<?php echo $start_date_value; ?>">
+                                <input type="date" name="end_date" class="form-control form-control-sm" value="<?php echo $end_date_value; ?>">
+                                <button id="filterButton" type="submit" class="btn btn-sm btn-outline-secondary d-flex align-items-center gap-1">
+                                    <i class="bi bi-calendar3"></i>
+                                    Filter
+                                </button>
+                                <a href="#" id="printButton" type="button" class="btn btn-sm btn-success">Cetak</a>
+                            </form>
+                        </div>
                     </div>
 
                     <table class="table table-bordered">
@@ -445,9 +461,10 @@ $jumlahDiantar = mysqli_num_rows($hasilDiantar);
                             <tr>
                                 <th scope="col">No.</th>
                                 <th scope="col">ID Transaksi</th>
+                                <th scope="col">Tanggal Transaksi</th>
                                 <th scope="col">Nama Customer</th>
                                 <th scope="col">Layanan</th>
-                                <th scope="col">harga 1 Potong</th>
+                                <th scope="col">harga</th>
                                 <th scope="col">Jumlah</th>
                                 <th scope="col">Keterangan</th>
                                 <th scope="col">Total</th>
@@ -459,7 +476,13 @@ $jumlahDiantar = mysqli_num_rows($hasilDiantar);
                         <tbody>
                             <?php
                             $nomor = 1;
-                            $hasilTransaksi = ambilDataTransaksi();
+                            $start_date = isset($_GET['start_date']) ? $_GET['start_date'] : '';
+                            $end_date = isset($_GET['end_date']) ? $_GET['end_date'] : '';
+                            $query = "SELECT * FROM tb_transaksi";
+                            if ($start_date && $end_date) {
+                                $query .= " WHERE tanggal_pesan BETWEEN '$start_date' AND '$end_date'";
+                            }
+                            $hasilTransaksi = mysqli_query($koneksi, $query);
                             while ($data = mysqli_fetch_array($hasilTransaksi)) { ?>
                                 <tr>
                                     <th scope="row">
@@ -467,6 +490,7 @@ $jumlahDiantar = mysqli_num_rows($hasilDiantar);
                                     </th>
 
                                     <td> <?php echo $data['id_transaksi']; ?></td>
+                                    <td> <?php echo $data['tanggal_pesan']; ?></td>
                                     <td> <?php echo $data['nama_customer']; ?></td>
                                     <td> <?php echo $data['layanan']; ?></td>
                                     <td> <?php echo $data['harga_perItem']; ?></td>
@@ -490,16 +514,6 @@ $jumlahDiantar = mysqli_num_rows($hasilDiantar);
                 <div id="dataCustomerContent">
                     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                         <h1 class="h2">Daftar Customer</h1>
-                        <div class="btn-toolbar mb-2 mb-md-0">
-                            <div class="btn-group me-2">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-                            </div>
-                            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1">
-                                <i class="bi bi-calendar3"></i>
-                                Minggu ini
-                            </button>
-                        </div>
                     </div>
 
                     <table class="table table-bordered">
@@ -602,6 +616,15 @@ $jumlahDiantar = mysqli_num_rows($hasilDiantar);
         document.getElementById('prosesBadge').innerText = <?php echo $jumlahDiproses; ?>;
         document.getElementById('diantarBadge').innerText = <?php echo $jumlahDiantar; ?>;
 
+    });
+    document.getElementById('printButton').addEventListener('click', function() {
+        var startDate = document.querySelector('input[name="start_date"]').value;
+        var endDate = document.querySelector('input[name="end_date"]').value;
+        var url = './reportTransaksi_PDF.php';
+        if (startDate && endDate) {
+            url += '?start_date=' + startDate + '&end_date=' + endDate;
+        }
+        window.location.href = url;
     });
 </script>
 

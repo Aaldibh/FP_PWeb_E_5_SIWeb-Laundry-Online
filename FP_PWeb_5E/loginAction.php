@@ -83,3 +83,19 @@ function signUp()
         echo "Input data gagal!";
     }
 }
+
+function getNextCustomerId()
+{
+    include_once("./koneksi.php");
+
+    // Query untuk mendapatkan ID berikutnya
+    $query = "SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'laundrydb' AND TABLE_NAME = 'tb_customer';";
+    $result = mysqli_query($koneksi, $query);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        return $row['AUTO_INCREMENT'];
+    } else {
+        return "Error";
+    }
+}
