@@ -8,6 +8,7 @@ include_once("./loginAction.php");
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = signUp();
 }
+$nextId = getNextCustomerId();
 ?>
 
 <!DOCTYPE html>
@@ -101,11 +102,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <br>
                 <div class="col modal-footer">
                     <a href="./index.php" type="button" class="btn btn-secondary" style="margin-right: auto;">Batal</a>
-                    <button type="submit" class="btn btn-primary" style="margin-left: auto;">Daftar</button>
+                    <a type="submit" class="btn btn-primary" style="margin-left: auto;" data-bs-toggle="modal" data-bs-target="#idCustomerModal">Daftar</a>
+                    <div class="modal fade" id="idCustomerModal" tabindex="-1" aria-labelledby="idCustomerModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="idCustomerModalLabel">ID Customer</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p style="color: green;">Pendaftaran akun telah berhasil.</p><br>
+                                    <p>ID Customer Anda adalah: <h7><?php echo $nextId; ?></h7>
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="summit" class="btn btn-primary">Login</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </form>
     </div>
+
+
 </body>
 
 </html>

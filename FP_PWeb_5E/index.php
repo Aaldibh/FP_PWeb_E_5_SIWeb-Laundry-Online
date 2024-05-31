@@ -102,32 +102,26 @@
 
                         <div class="col d-flex flex-column gap-2">
                             <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
-                                <svg class="bi" width="1em" height="1em">
-                                    <use xlink:href="#gear-fill" />
-                                </svg>
+                                <img src="./assets/bootstrap-icons-1.11.0/rocket-takeoff-white.svg" style="margin:5px;">
                             </div>
-                            <h4 class="fw-semibold mb-0 text-body-emphasis">Cuci Setrika</h4>
-                            <p class="text-body-secondary">Paragraph of text beneath the heading to explain the heading.</p>
+                            <h4 class="fw-semibold mb-0 text-body-emphasis">Pelayanan Cepat</h4>
+                            <p class="text-body-secondary">Nikmati pelayanan cepat kami.</p>
                         </div>
 
                         <div class="col d-flex flex-column gap-2">
                             <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
-                                <svg class="bi" width="1em" height="1em">
-                                    <use xlink:href="#speedometer" />
-                                </svg>
+                                <img src="./assets/bootstrap-icons-1.11.0/tools-white.svg" style="margin:5px;">
                             </div>
-                            <h4 class="fw-semibold mb-0 text-body-emphasis">Cuci Basah</h4>
-                            <p class="text-body-secondary">Paragraph of text beneath the heading to explain the heading.</p>
+                            <h4 class="fw-semibold mb-0 text-body-emphasis">Layanan Banyak</h4>
+                            <p class="text-body-secondary">Ada beberapa layanan yang tersedia, yaitu cuci basah, cuci kering, cuci setrika, dan setrika saja.</p>
                         </div>
 
                         <div class="col d-flex flex-column gap-2">
                             <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
-                                <svg class="bi" width="1em" height="1em">
-                                    <use xlink:href="#table" />
-                                </svg>
+                                <img src="./assets/bootstrap-icons-1.11.0/emoji-heart-eyes-white.svg" style="margin:5px;">
                             </div>
-                            <h4 class="fw-semibold mb-0 text-body-emphasis">Cuci Kering</h4>
-                            <p class="text-body-secondary">Paragraph of text beneath the heading to explain the heading.</p>
+                            <h4 class="fw-semibold mb-0 text-body-emphasis">Harga Ekonomis</h4>
+                            <p class="text-body-secondary">Nikmati lyanan kami dengan harga yang terjangkau.</p>
                         </div>
                     </div>
                 </div>

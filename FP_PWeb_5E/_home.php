@@ -32,12 +32,12 @@ while ($row = mysqli_fetch_assoc($layananResult)) {
 
 <head>
     <title>Smart Laundry</title>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./assets/bootstrap-5.3.3-examples/features/features.css">
     <link href="./bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <style>
     .bd-placeholder-img {
         font-size: 1.125rem;
@@ -158,19 +158,20 @@ while ($row = mysqli_fetch_assoc($layananResult)) {
 </style>
 
 <body>
+    <!-- HEADER HALAMAN CUSTOMER -->
     <header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="#">SELAMAT DATANG<br>Hai, selamat menikmati layanan Smart Laundry kami!</a>
         <ul class="navbar-nav flex-row d-md-none">
 
             <li class="nav-item text-nowrap">
                 <button class="nav-link px-3 text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-                    <i href="#list"><img src="./assets/bootstrap-icons-1.11.0/list-white.svg"></i>
+                    <i href="#list"><img src="./assets/bootstrap-icons-1.11.0/list-white.svg" style="width:30px; height:30px; margin-top:5px; margin-right:5px;"></i>
                 </button>
             </li>
         </ul>
     </header>
 
-    <!-- Navigasi bar -->
+    <!-- BAR NAVIGASI -->
     <div class="container-fluid" style="max-width: 100%;">
         <div class="row">
             <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary" style="position: fixed;">
@@ -220,9 +221,10 @@ while ($row = mysqli_fetch_assoc($layananResult)) {
                 </div>
             </div>
 
-            <!-- main control halaman Owner -->
+            <!-- MAIN CONTROL HALAMAN CUSTOMER -->
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <!-- page dashboard -->
+
+                <!-- KONTEN DASHBOARD -->
                 <div id="dashboardContent">
                     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                         <h1 class="h2">NgeLaundry Lagi Yuk!</h1>
@@ -259,7 +261,7 @@ while ($row = mysqli_fetch_assoc($layananResult)) {
                     </div>
                 </div>
 
-                <!-- checkOutContent()  -->
+                <!-- KONTEN CHECKOUT ATAU PENGISIAN DATA PESANAN -->
                 <div id="checkoutContent" style="display: none;">
                     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                         <a href="#" style="margin-right: 10px; margin-left: 10px;" id="kembaliDashboardLink"><img src="./assets/bootstrap-icons-1.11.0/arrow-left-circle.svg" style="width: 30px; height:30px;">
@@ -351,7 +353,7 @@ while ($row = mysqli_fetch_assoc($layananResult)) {
 
                                 <hr class="my-4">
                                 <div class="mb-5">
-                                    <button class="w-39 btn btn-primary btn-lg" type="submit">Konfirmasi Pesanan</button>
+                                    <button class="w-39 btn btn-primary btn-lg" type="submit">Buat Pesanan</button>
                                 </div>
                             </form>
                         </div>
@@ -369,6 +371,7 @@ while ($row = mysqli_fetch_assoc($layananResult)) {
                             <tr>
                                 <th scope="col">No.</th>
                                 <th scope="col">ID Transaksi</th>
+                                <th scope="col">Tanggal Pesan</th>
                                 <th scope="col">Layanan</th>
                                 <th scope="col">Waktu Ambil</th>
                                 <th scope="col">harga 1 Potong</th>
@@ -390,6 +393,7 @@ while ($row = mysqli_fetch_assoc($layananResult)) {
                                     </th>
 
                                     <td> <?php echo $data['id_transaksi']; ?></td>
+                                    <td><?php echo $data['tanggal_pesan']; ?></td>
                                     <td> <?php echo $data['layanan']; ?></td>
                                     <td> <?php echo $data['waktuAmbil']; ?></td>
                                     <td> <?php echo $data['harga_perItem']; ?></td>

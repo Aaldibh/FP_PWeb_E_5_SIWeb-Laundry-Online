@@ -8,6 +8,21 @@ if ($_SESSION['status'] != "login") {
     header("location:./loginOwner.php?pesan=belum_login");
 }
 include_once("./functionOperasionalOwner.php");
+
+// Ambil tahun saat ini sebagai default
+$currentYear = date("Y");
+if (isset($_GET['year'])) {
+    $currentYear = $_GET['year'];
+}
+
+// Ambil data untuk chart berdasarkan tahun yang dipilih
+$dataTransaksiChart = ambilDataTransaksiChart($currentYear);
+$months = [];
+$totals = [];
+foreach ($dataTransaksiChart as $data) {
+    $months[] = $data['bulan'];
+    $totals[] = round($data['total']);
+}
 ?>
 
 <!doctype html>
@@ -19,6 +34,7 @@ include_once("./functionOperasionalOwner.php");
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="../assets/chartjs/Chart.js"></script>
 </head>
 
 <style>
@@ -114,17 +130,12 @@ include_once("./functionOperasionalOwner.php");
 
 <body>
     <header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="#">Smart Laundry</a>
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="#">SELAMAT DATANG<br>Anda masuk sebagai Owner.</a>
         <ul class="navbar-nav flex-row d-md-none">
-            <li class="nav-item text-nowrap">
-                <button class="nav-link px-3 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSearch" aria-controls="navbarSearch" aria-expanded="false" aria-label="Toggle search">
-                    <i class="bi bi-search" href="#search"></i>
-                </button>
-            </li>
 
             <li class="nav-item text-nowrap">
                 <button class="nav-link px-3 text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="bi bi-list" href="#list"></i>
+                    <i href="#list"><img src="../assets/bootstrap-icons-1.11.0/list-white.svg" style="width:30px; height:30px; margin-top:5px; margin-right:5px;"></i>
                 </button>
             </li>
         </ul>
@@ -135,14 +146,14 @@ include_once("./functionOperasionalOwner.php");
 
     </header>
 
-    <!-- Navigasi bar -->
+    <!-- BAR NAVIGASI OWNER -->
     <div class="container-fluid" style="max-width: 100%;">
         <div class="row">
             <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
                 <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
 
                     <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="sidebarMenuLabel">Smart Laundry</h5>
+                        <h5 class="offcanvas-title" id="sidebarMenuLabel">RUANG OWNER</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu" aria-label="Close"></button>
                     </div>
 
@@ -199,26 +210,34 @@ include_once("./functionOperasionalOwner.php");
                 </div>
             </div>
 
-            <!-- main control halaman Owner -->
+
+            <!-- MAIN CONTROL HALAMAN OWNER (DASHBOARD, DATA TRANSAKSI, DATA CUSTOMER, DATA LAYANAN, DATA ADMIN)-->
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <!-- page dashboard -->
+
+                <!-- CONTENT DASHBOARD -->
                 <div id="dashboardContent">
                     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                         <h1 class="h2">Dashboard</h1>
                         <div class="btn-toolbar mb-2 mb-md-0">
-                            <div class="btn-group me-2">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-                            </div>
-                            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1">
+                            <!-- Button filter tahun chart -->
+                            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-calendar3"></i>
-                                Minggu ini
+                                <span id="selectedYear"><?php echo $currentYear; ?></span>
                             </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" href="#" onclick="filterByYear(2024)">2024</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="filterByYear(2023)">2023</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="filterByYear(2022)">2022</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="filterByYear(2021)">2021</a></li>
+                            </ul>
                         </div>
+                    </div>
+                    <div style="width: 500px;height: 500px">
+                        <canvas id="myChart"></canvas>
                     </div>
                 </div>
 
-                <!-- page data transaksi -->
+                <!-- CONTENT DATA TRANSAKSI -->
                 <div id="dataTransaksiContent">
                     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                         <h1 class="h2">Data Transaksi</h1>
@@ -229,14 +248,14 @@ include_once("./functionOperasionalOwner.php");
                             <tr>
                                 <th scope="col">No.</th>
                                 <th scope="col">ID Transaksi</th>
-                                <th scope="col">Nama Customer</th>
+                                <th scope="col">Tanggal</th>
+                                <th scope="col">ID Customer</th>
                                 <th scope="col">Layanan</th>
-                                <th scope="col">harga 1 Potong</th>
+                                <th scope="col">harga</th>
                                 <th scope="col">Jumlah</th>
                                 <th scope="col">Keterangan</th>
                                 <th scope="col">Total</th>
                                 <th scope="col">Bayar</th>
-                                <th scope="col">Status</th>
                             </tr>
                         </thead>
 
@@ -251,14 +270,14 @@ include_once("./functionOperasionalOwner.php");
                                     </th>
 
                                     <td> <?php echo $data['id_transaksi']; ?></td>
-                                    <td> <?php echo $data['nama_customer']; ?></td>
+                                    <td> <?php echo $data['tanggal_pesan']; ?></td>
+                                    <td> <?php echo $data['idCust']; ?></td>
                                     <td> <?php echo $data['layanan']; ?></td>
                                     <td> <?php echo $data['harga_perItem']; ?></td>
                                     <td> <?php echo $data['jumlah_item']; ?></td>
                                     <td> <?php echo $data['keterangan']; ?></td>
                                     <td> <?php echo $data['total_transaksi']; ?></td>
                                     <td> <?php echo $data['total_bayar']; ?></td>
-                                    <td> <?php echo $data['status_transaksi']; ?></td>
                                 </tr>
 
                             <?php
@@ -455,6 +474,44 @@ include_once("./functionOperasionalOwner.php");
     </div>
     </div>
     </div>
+    <script>
+        function filterByYear(year) {
+            window.location.href = '?year=' + year;
+        }
+
+        var ctx = document.getElementById("myChart").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: <?php echo json_encode($months); ?>,
+                datasets: [{
+                    label: 'Pemasukan Setiap Bulan',
+                    data: <?php echo json_encode($totals); ?>,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return 'Pemasukan: ' + Math.round(tooltipItem.raw); // Membulatkan nilai pada tooltip
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 
 <script src="../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>

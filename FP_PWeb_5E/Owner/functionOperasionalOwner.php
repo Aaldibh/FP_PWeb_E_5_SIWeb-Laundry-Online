@@ -1,8 +1,9 @@
 <!-- Fungsi operasional Owner -->
 <!-- POP UP Operasional Tambah Data Layanan -->
-<?php 
+<?php
 include_once("../koneksi.php");
-function popupTambahLayanan(){ //fungsi tambah Layanan
+function popupTambahLayanan()
+{ //fungsi tambah Layanan
 ?>
     <div class="modal" id="modalTambahLayanan" tabindex="-1">
         <div class="modal-dialog">
@@ -29,8 +30,8 @@ function popupTambahLayanan(){ //fungsi tambah Layanan
                         </div>
 
                         <div class="modal-footer">
-                            <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                            <button  type="submit" class="btn btn-primary">Tambah</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-primary">Tambah</button>
                         </div>
                     </form>
                 </div>
@@ -40,8 +41,9 @@ function popupTambahLayanan(){ //fungsi tambah Layanan
 <?php } ?>
 
 <!-- POP UP Operasional Tambah Data Admin -->
-<?php 
-function popupTambahAdmin(){ //fungsi tambah admin 
+<?php
+function popupTambahAdmin()
+{ //fungsi tambah admin 
 ?>
     <div class="modal" id="modalTambahAdmin" tabindex="-1">
         <div class="modal-dialog">
@@ -68,28 +70,29 @@ function popupTambahAdmin(){ //fungsi tambah admin
                         </div>
 
                         <div class="modal-footer">
-                            <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                            <button  type="submit" class="btn btn-primary">Tambah</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-primary">Tambah</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-<?php 
+<?php
 }
 ?>
 
 <!-- POP UP Operasional Edit/Update Layanan -->
 <?php
-function popupEditLayanan($koneksi, $id){ //fungsi edit Layanan
+function popupEditLayanan($koneksi, $id)
+{ //fungsi edit Layanan
     $query = "SELECT * FROM tb_layanan WHERE id_layanan = '$id'";
     $hasil = mysqli_query($koneksi, $query);
-    
-    if($hasil && mysqli_num_rows($hasil) > 0) {
+
+    if ($hasil && mysqli_num_rows($hasil) > 0) {
         $data = mysqli_fetch_array($hasil);
 ?>
-        <div class="modal" id="modalEditLayanan_<?php echo $id;?>" tabindex="-1" >
+        <div class="modal" id="modalEditLayanan_<?php echo $id; ?>" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -98,10 +101,10 @@ function popupEditLayanan($koneksi, $id){ //fungsi edit Layanan
                     </div>
                     <div class="modal-body text-start ml-3">
                         <p>Masukkan data layanan laundry.</p>
-    
+
                         <form method="post" action="./prosesEditLayanan.php">
                             <input type="hidden" name="id" value="<?php echo $id ?>">
-    
+
                             <div class="mb-3">
                                 <label for="layananInput" class="form-label">Layanan</label>
                                 <input type="text" class="form-control" name="nama" value="<?php echo $data['nama_layanan'] ?>">
@@ -114,7 +117,7 @@ function popupEditLayanan($koneksi, $id){ //fungsi edit Layanan
                                 <label for="hargaInput" class="form-label">Harga</label>
                                 <input type="text" class="form-control" name="harga" value="<?php echo $data['harga_layanan'] ?>">
                             </div>
-    
+
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                                 <button type="submit" class="btn btn-primary">Simpan</button>
@@ -124,7 +127,7 @@ function popupEditLayanan($koneksi, $id){ //fungsi edit Layanan
                 </div>
             </div>
         </div>
-<?php 
+<?php
     } else {
         echo "Data layanan tidak ditemukan.";
     }
@@ -133,14 +136,15 @@ function popupEditLayanan($koneksi, $id){ //fungsi edit Layanan
 
 <!-- POP UP Operasional Edit/Update Layanan -->
 <?php
-function popupEditAdmin($koneksi, $id){ //fungsi edit Layanan
+function popupEditAdmin($koneksi, $id)
+{ //fungsi edit Layanan
     $query = "SELECT * FROM tb_admin WHERE idAdmin = '$id'";
     $hasil = mysqli_query($koneksi, $query);
-    
-    if($hasil && mysqli_num_rows($hasil) > 0) {
+
+    if ($hasil && mysqli_num_rows($hasil) > 0) {
         $data = mysqli_fetch_array($hasil);
 ?>
-        <div class="modal" id="modalEditAdmin_<?php echo $id;?>" tabindex="-1" >
+        <div class="modal" id="modalEditAdmin_<?php echo $id; ?>" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -149,10 +153,10 @@ function popupEditAdmin($koneksi, $id){ //fungsi edit Layanan
                     </div>
                     <div class="modal-body text-start ml-3">
                         <p>Masukkan data layanan laundry.</p>
-    
+
                         <form method="post" action="./prosesEditAdmin.php">
                             <input type="hidden" name="id" value="<?php echo $id ?>">
-    
+
                             <div class="mb-3">
                                 <label for="namaAdmin" class="form-label">Nama Admin</label>
                                 <input type="text" class="form-control" name="nama" value="<?php echo $data['namaAdmin'] ?>">
@@ -165,7 +169,7 @@ function popupEditAdmin($koneksi, $id){ //fungsi edit Layanan
                                 <label for="posisiAdmin" class="form-label">Posisi</label>
                                 <input type="text" class="form-control" name="posisi" value="<?php echo $data['posisiAdmin'] ?>">
                             </div>
-    
+
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                                 <button type="submit" class="btn btn-primary">Simpan</button>
@@ -175,7 +179,7 @@ function popupEditAdmin($koneksi, $id){ //fungsi edit Layanan
                 </div>
             </div>
         </div>
-<?php 
+<?php
     } else {
         echo "Data layanan tidak ditemukan.";
     }
@@ -184,14 +188,15 @@ function popupEditAdmin($koneksi, $id){ //fungsi edit Layanan
 
 <!-- POP UP Operasional Hapus Admin -->
 <?php
-function popupHapus_Admin($koneksi, $id){ //fungsi hapus Admin
+function popupHapus_Admin($koneksi, $id)
+{ //fungsi hapus Admin
     $query = "SELECT * FROM tb_admin WHERE idAdmin = '$id'";
     $hasil = mysqli_query($koneksi, $query);
-    
-    if($hasil && mysqli_num_rows($hasil) > 0) {
+
+    if ($hasil && mysqli_num_rows($hasil) > 0) {
         $data = mysqli_fetch_array($hasil);
 ?>
-        <div class="modal" id="modalHapusAdmin_<?php echo $id;?>" tabindex="-1" >
+        <div class="modal" id="modalHapusAdmin_<?php echo $id; ?>" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -200,8 +205,8 @@ function popupHapus_Admin($koneksi, $id){ //fungsi hapus Admin
                     </div>
                     <div class="modal-body text-start ml-3">
                         <p>Apakah Anda yakin ingin menghapus data admin dengan nama <?php echo $data['namaAdmin'] ?></p>
-    
-                        <form method="post" action="prosesHapus_Admin.php?id=<?php echo $data['idAdmin']?>" >
+
+                        <form method="post" action="prosesHapus_Admin.php?id=<?php echo $data['idAdmin'] ?>">
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                                 <button type="submit" class="btn btn-danger">Hapus</button>
@@ -211,7 +216,7 @@ function popupHapus_Admin($koneksi, $id){ //fungsi hapus Admin
                 </div>
             </div>
         </div>
-<?php 
+<?php
     } else {
         echo "Data layanan tidak ditemukan.";
     }
@@ -220,14 +225,15 @@ function popupHapus_Admin($koneksi, $id){ //fungsi hapus Admin
 
 <!-- POP UP Operasional Hapus Layanan -->
 <?php
-function popupHapus_Layanan($koneksi, $id){ //fungsi hapus Layanan
+function popupHapus_Layanan($koneksi, $id)
+{ //fungsi hapus Layanan
     $query = "SELECT * FROM tb_layanan WHERE id_layanan = '$id'";
     $hasil = mysqli_query($koneksi, $query);
-    
-    if($hasil && mysqli_num_rows($hasil) > 0) {
+
+    if ($hasil && mysqli_num_rows($hasil) > 0) {
         $data = mysqli_fetch_array($hasil);
 ?>
-        <div class="modal" id="modalHapusLayanan_<?php echo $id;?>" tabindex="-1" >
+        <div class="modal" id="modalHapusLayanan_<?php echo $id; ?>" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -236,8 +242,8 @@ function popupHapus_Layanan($koneksi, $id){ //fungsi hapus Layanan
                     </div>
                     <div class="modal-body text-start ml-3">
                         <p>Apakah Anda yakin ingin menghapus data admin dengan nama <?php echo $data['nama_layanan'] ?></p>
-    
-                        <form method="post" action="prosesHapus_Layanan.php?id=<?php echo $data['id_layanan']?>" >
+
+                        <form method="post" action="prosesHapus_Layanan.php?id=<?php echo $data['id_layanan'] ?>">
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                                 <button type="submit" class="btn btn-danger">Hapus</button>
@@ -247,7 +253,7 @@ function popupHapus_Layanan($koneksi, $id){ //fungsi hapus Layanan
                 </div>
             </div>
         </div>
-<?php 
+<?php
     } else {
         echo "Data layanan tidak ditemukan.";
     }
@@ -256,14 +262,15 @@ function popupHapus_Layanan($koneksi, $id){ //fungsi hapus Layanan
 
 <!-- POP UP Operasional Hapus Data Customer -->
 <?php
-function popupHapus_Customer($koneksi, $id){ //fungsi hapus Customer
+function popupHapus_Customer($koneksi, $id)
+{ //fungsi hapus Customer
     $query = "SELECT * FROM tb_Customer WHERE idCust = '$id'";
     $hasil = mysqli_query($koneksi, $query);
-    
-    if($hasil && mysqli_num_rows($hasil) > 0) {
+
+    if ($hasil && mysqli_num_rows($hasil) > 0) {
         $data = mysqli_fetch_array($hasil);
 ?>
-        <div class="modal" id="modalHapusCustomer_<?php echo $id;?>" tabindex="-1" >
+        <div class="modal" id="modalHapusCustomer_<?php echo $id; ?>" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -272,8 +279,8 @@ function popupHapus_Customer($koneksi, $id){ //fungsi hapus Customer
                     </div>
                     <div class="modal-body text-start ml-3">
                         <p>Apakah Anda yakin ingin menghapus data admin dengan nama <?php echo $data['namaCust'] ?></p>
-    
-                        <form method="post" action="prosesHapus_Customer.php?id=<?php echo $data['idCust']?>" >
+
+                        <form method="post" action="prosesHapus_Customer.php?id=<?php echo $data['idCust'] ?>">
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                                 <button type="submit" class="btn btn-danger">Hapus</button>
@@ -283,10 +290,27 @@ function popupHapus_Customer($koneksi, $id){ //fungsi hapus Customer
                 </div>
             </div>
         </div>
-<?php 
+<?php
     } else {
         echo "Data layanan tidak ditemukan.";
     }
 }
 ?>
 
+<?php //MENGAMBIL DATA DARI DATABASE UNTUK MEMBUAT CHART PEMASUKKAN PER-BULAN.
+function ambilDataTransaksiChart($year)
+{
+    global $koneksi;
+    $query = "SELECT DATE_FORMAT(tanggal_pesan, '%M') AS bulan, SUM(total_bayar) AS total
+              FROM tb_transaksi WHERE YEAR(tanggal_pesan) = '$year' GROUP BY bulan ORDER BY MONTH(tanggal_pesan) ASC";
+    $result = mysqli_query($koneksi, $query);
+    if (!$result) {
+        die('Query Error: ' . mysqli_error($koneksi));
+    }
+    $data = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $data[] = $row;
+    }
+    return $data;
+}
+?>

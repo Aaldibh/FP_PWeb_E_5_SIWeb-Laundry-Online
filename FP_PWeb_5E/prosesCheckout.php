@@ -14,12 +14,14 @@ $keterangan = $_POST['keterangan'];
 $tagihan = $_POST['tagihan'];
 $totalBayar = $_POST['tagihan'];
 $metodeBayar = $_POST['metodeBayar'];
+$tanggal = date("Y-m-d H:i:s"); // Menyimpan tanggal saat ini
 
-$query = "insert into tb_transaksi (idCust, nama_customer, noTlp_Cust, alamat_Ambil, layanan, harga_perItem, jumlah_item, keterangan, total_transaksi, metodeBayar, total_bayar, waktuAmbil, status_transaksi) Value ('$idCust','$namaCust', '$noTlp', '$alamat', '$layanan', '$harga', '$jumlah', '$keterangan', '$tagihan', '$metodeBayar', '$totalBayar', '$waktuAmbil', 'diambil')";
+$query = "insert into tb_transaksi (idCust, nama_customer, noTlp_Cust, alamat_Ambil, layanan, harga_perItem, jumlah_item, keterangan, total_transaksi, metodeBayar, total_bayar, waktuAmbil, status_transaksi, tanggal_pesan) Value ('$idCust','$namaCust', '$noTlp', '$alamat', '$layanan', '$harga', '$jumlah', '$keterangan', '$tagihan', '$metodeBayar', '$totalBayar', '$waktuAmbil', 'diambil', '$tanggal')";
 $hasil = mysqli_query($koneksi, $query);
 
 if ($hasil) {
-    header('location:./_home.php');
+
+    header('location: ./_home.php');
 } else {
     echo "Input data gagal!";
 }
