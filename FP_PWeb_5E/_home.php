@@ -295,7 +295,7 @@ while ($row = mysqli_fetch_assoc($layananResult)) {
                                             <option value="" selected disabled>Pilih waktu ambil kurir</option>
                                             <option value="09.00 - 12.00">09:00 - 12:00</option>
                                             <option value="13.00 - 15.00">13:00 - 15:00</option>
-                                            <option value="16.00 - 18.00">13:00 - 15:00</option>
+                                            <option value="16.00 - 18.00">16:00 - 18:00</option>
                                         </select>
                                     </div>
 

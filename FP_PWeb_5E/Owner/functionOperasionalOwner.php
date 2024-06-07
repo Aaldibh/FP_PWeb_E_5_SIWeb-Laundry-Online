@@ -20,10 +20,7 @@ function popupTambahLayanan()
                             <label for="layananInput" class="form-label">Layanan</label>
                             <input type="text" class="form-control" name="nama">
                         </div>
-                        <div class="mb-3">
-                            <label for="jenisPaketInput" class="form-label">Jenis Paket</label>
-                            <input type="text" class="form-control" name="jenis">
-                        </div>
+                        
                         <div class="mb-3">
                             <label for="hargaInput" class="form-label">Harga</label>
                             <input type="text" class="form-control" name="harga">
@@ -109,10 +106,7 @@ function popupEditLayanan($koneksi, $id)
                                 <label for="layananInput" class="form-label">Layanan</label>
                                 <input type="text" class="form-control" name="nama" value="<?php echo $data['nama_layanan'] ?>">
                             </div>
-                            <div class="mb-3">
-                                <label for="jenisPaketInput" class="form-label">Jenis Paket</label>
-                                <input type="text" class="form-control" name="jenis" value="<?php echo $data['jenis_paket'] ?>">
-                            </div>
+                            
                             <div class="mb-3">
                                 <label for="hargaInput" class="form-label">Harga</label>
                                 <input type="text" class="form-control" name="harga" value="<?php echo $data['harga_layanan'] ?>">
