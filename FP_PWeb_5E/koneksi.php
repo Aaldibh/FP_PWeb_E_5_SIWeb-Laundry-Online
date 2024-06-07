@@ -30,14 +30,6 @@ function ambilDataLayanan()
     return $hasil;
 }
 
-function ambilDataPegawai()
-{
-    global $koneksi;
-    $query = "SELECT * FROM tb_pegawai";
-    $hasil = mysqli_query($koneksi, $query);
-    return $hasil;
-}
-
 function ambilDataTransaksi()
 {
     global $koneksi;

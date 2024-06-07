@@ -6,7 +6,6 @@ include_once("../koneksi.php");
 if ($_SESSION['status'] != "login") {
     header("location:../loginAdmin.php?pesan=belum_login");
 }
-include_once("./functionOperationAdmin.php");
 
 //ambil data transaksi sesuai status
 $hasilDiambil = ambilTransaksiFromStatus('diambil');
@@ -217,6 +216,7 @@ $end_date_value = isset($_GET['end_date']) ? $_GET['end_date'] : '';
                         </a>
                     </div>
 
+                    <!-- KONTEN STATUS PESANAN YANG DIAMBIL -->
                     <div id="ambilContent">
                         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                             <h5 class="h5">Pesanan Diambil</h5>
@@ -275,6 +275,7 @@ $end_date_value = isset($_GET['end_date']) ? $_GET['end_date'] : '';
                         </table>
                     </div>
 
+                    <!-- KONTEN STATUS PESANAN DIPROSES -->
                     <div id="prosesContent">
                         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                             <h5 class="h5">Pesanan Diproses</h5>
@@ -318,7 +319,7 @@ $end_date_value = isset($_GET['end_date']) ? $_GET['end_date'] : '';
                                         <td> <?php echo $data['total_transaksi']; ?></td>
                                         <td> <?php echo $data['metodeBayar']; ?></td>
                                         <td> <?php echo $data['status_transaksi']; ?></td>
-                                        <td> <a href="#" class="btn btn-primary" onclick="prosesTransaksi(<?php echo $data['id_transaksi']; ?> , 'diantar')">
+                                        <td> <a href="#" class="btn btn-primary" onclick="antarTransaksi(<?php echo $data['id_transaksi']; ?> , 'diantar')">
                                                 <i class="fas fa-user-plus"></i>Antar
                                             </a>
                                         </td>
@@ -332,6 +333,8 @@ $end_date_value = isset($_GET['end_date']) ? $_GET['end_date'] : '';
                             </tbody>
                         </table>
                     </div>
+
+                    <!-- KONTEN STATUS PESANAN DIANTAR -->
                     <div id="diantarContent">
                         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                             <h5 class="h5">Pesanan Perlu Sedang Diantar</h5>
@@ -351,6 +354,7 @@ $end_date_value = isset($_GET['end_date']) ? $_GET['end_date'] : '';
                                     <th scope="col">Total</th>
                                     <th scope="col">Metode Pembayaran</th>
                                     <th scope="col">Status</th>
+                                    <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
 
@@ -375,6 +379,10 @@ $end_date_value = isset($_GET['end_date']) ? $_GET['end_date'] : '';
                                         <td> <?php echo $data['total_transaksi']; ?></td>
                                         <td> <?php echo $data['metodeBayar']; ?></td>
                                         <td> <?php echo $data['status_transaksi']; ?></td>
+                                        <td> <a href="#" class="btn btn-success" onclick="selesaiTransaksi(<?php echo $data['id_transaksi']; ?> , 'selesai')">
+                                                <i class="fas fa-user-plus"></i> Selesai
+                                            </a>
+                                        </td>
 
                                     </tr>
 
@@ -385,6 +393,8 @@ $end_date_value = isset($_GET['end_date']) ? $_GET['end_date'] : '';
                             </tbody>
                         </table>
                     </div>
+
+                    <!-- KONTEN PESANAN SELESAI -->
                     <div id="selesaiContent">
                         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                             <h5 class="h5">Pesanan Selesai</h5>
@@ -439,7 +449,7 @@ $end_date_value = isset($_GET['end_date']) ? $_GET['end_date'] : '';
                     </div>
                 </div>
 
-                <!-- KONTEN TRANSAKSI -->
+                <!-- PAGE SEMUA TRANSAKSI -->
                 <div id="dataTransaksiContent">
                     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                         <h1 class="h2">Daftar Transaksi</h1>

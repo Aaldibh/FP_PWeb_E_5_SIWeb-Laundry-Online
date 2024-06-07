@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 27, 2024 at 09:04 AM
+-- Generation Time: Jun 07, 2024 at 10:22 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -39,9 +39,10 @@ CREATE TABLE `tb_admin` (
 --
 
 INSERT INTO `tb_admin` (`idAdmin`, `namaAdmin`, `passwordAdmin`, `posisiAdmin`) VALUES
-(24042402, 'Admin', 'admin', 'Admin'),
+(24042402, 'admin', 'admin', 'Admin'),
 (24042403, 'Adi', 'adi', 'Kasir'),
-(24042405, 'Teduh', 'teduh', 'Kasir');
+(24042405, 'Teduh', 'teduh', 'Kasir'),
+(24042406, 'aldi', 'aldi', 'admin');
 
 -- --------------------------------------------------------
 
@@ -66,7 +67,12 @@ CREATE TABLE `tb_customer` (
 
 INSERT INTO `tb_customer` (`idCust`, `namaCust`, `alamatCust`, `teleponCust`, `emailCust`, `genderCust`, `statusCust`, `passwordCust`) VALUES
 (1001, 'Pelanggan1', 'Surabaya', '0819832734', 'pelanggan1@gmail.com', 'Perempuan', 'Not Member', 'pelanggan1'),
-(1002, 'aldi', 'Surabaya, Indonesia', '081231743600', 'aldibagushermawan10@gmail.com', 'Male', 'Not Member', 'aldi2002');
+(1002, 'aldi', 'Surabaya, Indonesia', '081231743600', 'aldibagushermawan10@gmail.com', 'Male', 'Not Member', 'aldi2002'),
+(1003, 'adi', 'KALIJUDAN TARUNA V NO. 8, RT. 05/RW. 03', '081323734087', 'aldibagushermawan10@gmail.com', 'Male', 'Not Member', '123'),
+(1004, 'Aldi Bagus Hermawan ', 'KALIJUDAN TARUNA V NO. 8, RT. 05/RW. 03', '081323734087', 'aldibagushermawan10@gmail.com', 'Male', 'Not Member', '123'),
+(1005, 'Teduh', 'Bojonegoro', '098097487', 'teduh@gmail.com', 'Male', 'Not Member', '12345'),
+(1006, 'pelanggan', 'pelanggan', '09329838', 'pelanggan@gmail.com', 'Male', 'Not Member', '12345'),
+(1007, 'pelanggan', 'pelanggan', '09329838', 'pelanggan@gmail.com', 'Male', 'Not Member', '12345');
 
 -- --------------------------------------------------------
 
@@ -112,30 +118,6 @@ INSERT INTO `tb_owner` (`idOwner`, `namaOwner`, `passwordOwner`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_pegawai`
---
-
-CREATE TABLE `tb_pegawai` (
-  `id_pegawai` int(11) NOT NULL,
-  `nama_pegawai` varchar(50) NOT NULL,
-  `posisi_pegawai` varchar(20) NOT NULL,
-  `gender_pegawai` varchar(15) NOT NULL,
-  `noTlp_pegawai` varchar(15) NOT NULL,
-  `alamat_pegawai` varchar(100) NOT NULL,
-  `jmlAbsen_pegawai` int(11) DEFAULT NULL,
-  `keterangan_absensi` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tb_pegawai`
---
-
-INSERT INTO `tb_pegawai` (`id_pegawai`, `nama_pegawai`, `posisi_pegawai`, `gender_pegawai`, `noTlp_pegawai`, `alamat_pegawai`, `jmlAbsen_pegawai`, `keterangan_absensi`) VALUES
-(1, 'Aldi Bagus Hermawan ', 'Mesin Cuci', 'Laki-laki', '0823652671', 'Surabaya', NULL, NULL);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tb_transaksi`
 --
 
@@ -153,22 +135,29 @@ CREATE TABLE `tb_transaksi` (
   `metodeBayar` varchar(15) NOT NULL,
   `total_bayar` int(11) NOT NULL,
   `waktuAmbil` varchar(20) DEFAULT NULL,
-  `status_transaksi` varchar(20) NOT NULL
+  `status_transaksi` varchar(20) NOT NULL,
+  `tanggal_pesan` date DEFAULT curdate()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tb_transaksi`
 --
 
-INSERT INTO `tb_transaksi` (`id_transaksi`, `idCust`, `nama_customer`, `noTlp_Cust`, `alamat_Ambil`, `layanan`, `harga_perItem`, `jumlah_item`, `keterangan`, `total_transaksi`, `metodeBayar`, `total_bayar`, `waktuAmbil`, `status_transaksi`) VALUES
-(0, 0, 'aldi', '097595739', 'Surabaya, Indonesia', 'Cuci Setrika ', 36000, 1, 'uji coba2', 36000, 'DANA', 36000, '13.00 - 15.00', 'diproses'),
-(1, 0, '', '', '', '', 0, 0, '', 0, '', 0, '', 'diproses'),
-(2, 0, '', '', '', '', 0, 0, '', 0, '', 0, '', 'diambil'),
-(3, 0, '', '', '', '', 0, 0, '', 0, '', 0, '', 'diproses'),
-(4, 0, '', '', '', '', 0, 0, '', 0, '', 0, '', 'diantar'),
-(5, 0, 'Aldi Bagus Hermawan ', '000000999', 'Surabaya', '64', 31000, 1, '', 31000, 'ShopeePay', 31000, '09.00 - 12.00', 'diantar'),
-(6, 0, 'Adinanda', '000000999', 'Surabaya', 'Cuci Kering', 31000, 1, 'uji coba', 31000, 'ShopeePay', 31000, '13.00 - 15.00', 'selesai'),
-(8, 1002, 'Teduh', '0939274878', 'Surabaya, Indonesia', 'Cuci Setrika ', 36000, 1, 'uji 3', 36000, 'DANA', 36000, '13.00 - 15.00', 'diambil');
+INSERT INTO `tb_transaksi` (`id_transaksi`, `idCust`, `nama_customer`, `noTlp_Cust`, `alamat_Ambil`, `layanan`, `harga_perItem`, `jumlah_item`, `keterangan`, `total_transaksi`, `metodeBayar`, `total_bayar`, `waktuAmbil`, `status_transaksi`, `tanggal_pesan`) VALUES
+(0, 0, 'aldi', '097595739', 'Surabaya, Indonesia', 'Cuci Setrika ', 36000, 1, 'uji coba2', 36000, 'DANA', 36000, '13.00 - 15.00', 'diproses', '2023-11-30'),
+(1, 0, '', '', '', '', 0, 0, '', 0, '', 100000, '', 'diproses', '2023-12-29'),
+(2, 0, '', '', '', '', 0, 0, '', 0, '', 76000, '', 'selesai', '2023-12-30'),
+(3, 0, '', '', '', '', 0, 0, '', 0, '', 18000, '', 'diantar', '2023-12-30'),
+(4, 0, '', '', '', '', 0, 0, '', 0, '', 16000, '', 'diantar', '2023-12-30'),
+(5, 0, 'Aldi Bagus Hermawan ', '000000999', 'Surabaya', '64', 31000, 1, '', 31000, 'ShopeePay', 31000, '09.00 - 12.00', 'diantar', '2024-03-30'),
+(6, 0, 'Adinanda', '000000999', 'Surabaya', 'Cuci Kering', 31000, 1, 'uji coba', 31000, 'ShopeePay', 31000, '13.00 - 15.00', 'selesai', '2024-03-30'),
+(8, 1002, 'Teduh', '0939274878', 'Surabaya, Indonesia', 'Cuci Setrika ', 36000, 1, 'uji 3', 36000, 'DANA', 36000, '13.00 - 15.00', 'diambil', '2024-04-30'),
+(9, 1004, 'Aldi Bagus Hermawan ', '0876788', 'Surabaya', 'Cuci Basah', 18000, 2, 'cuci yang bersih', 36000, 'ShopeePay', 36000, '13.00 - 15.00', 'diambil', '2024-04-30'),
+(10, 1003, 'Teduh', '000000999', 'Surabaya', 'Cuci Kering', 31000, 2, 'uji coba aja', 62000, 'ShopeePay', 62000, '16.00 - 18.00', 'diambil', '2024-05-30'),
+(11, 1003, 'Aldi Bagus Hermawan ', '000000999', 'Surabaya', 'Cuci Kering', 31000, 1, '', 31000, 'ShopeePay', 31000, '16.00 - 18.00', 'diambil', '2024-05-30'),
+(12, 1004, 'admin', '343434', 'Surabaya', 'Cuci Basah', 18000, 0, '', 0, 'ShopeePay', 0, '13.00 - 15.00', 'diambil', '2024-05-30'),
+(13, 1002, 'aldi', '0939274878', 'Surabaya, Indonesia', 'Cuci Setrika ', 36000, 1, '', 36000, 'DANA', 36000, '13.00 - 15.00', 'diambil', '2024-05-30'),
+(14, 1002, 'Masako Ayam', '0939274878', 'Surabaya, Indonesia', 'Cuci Setrika ', 36000, 1, '', 36000, 'DANA', 36000, '13.00 - 15.00', 'diambil', '2024-05-30');
 
 --
 -- Indexes for dumped tables
@@ -199,12 +188,6 @@ ALTER TABLE `tb_owner`
   ADD PRIMARY KEY (`idOwner`);
 
 --
--- Indexes for table `tb_pegawai`
---
-ALTER TABLE `tb_pegawai`
-  ADD PRIMARY KEY (`id_pegawai`);
-
---
 -- Indexes for table `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
@@ -218,13 +201,13 @@ ALTER TABLE `tb_transaksi`
 -- AUTO_INCREMENT for table `tb_admin`
 --
 ALTER TABLE `tb_admin`
-  MODIFY `idAdmin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24042406;
+  MODIFY `idAdmin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24042407;
 
 --
 -- AUTO_INCREMENT for table `tb_customer`
 --
 ALTER TABLE `tb_customer`
-  MODIFY `idCust` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1003;
+  MODIFY `idCust` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1026;
 
 --
 -- AUTO_INCREMENT for table `tb_layanan`
@@ -239,16 +222,10 @@ ALTER TABLE `tb_owner`
   MODIFY `idOwner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `tb_pegawai`
---
-ALTER TABLE `tb_pegawai`
-  MODIFY `id_pegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT for table `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
