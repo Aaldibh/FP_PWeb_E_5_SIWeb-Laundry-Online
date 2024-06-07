@@ -101,8 +101,24 @@ document.addEventListener("DOMContentLoaded", function() {
         sessionStorage.setItem('lastSelectedPage', 'pesananSelesai');
     });  
 });
+
+// POP UP YAKIN/TIDAK PROSES TRANSAKSI
 function prosesTransaksi(id_transaksi, update_status) {
-    var confirmation = confirm("Apakah Anda yakin ingin memproses transaksi ini?");
+    var confirmation = confirm("Apakah Anda yakin ingin memproses pesanan ini?");
+    if (confirmation) {
+        window.location.href = 'prosesUpdatedStatus.php?id=' + id_transaksi + '&status=' + update_status;
+    }
+}
+
+function antarTransaksi(id_transaksi, update_status) {
+    var confirmation = confirm("Apakah Anda yakin, pesanan ini sudah siap untuk diantar?");
+    if (confirmation) {
+        window.location.href = 'prosesUpdatedStatus.php?id=' + id_transaksi + '&status=' + update_status;
+    }
+}
+
+function selesaiTransaksi(id_transaksi, update_status) {
+    var confirmation = confirm("Apakah Anda yakin, pesanan ini sudah diterima oleh pelanggan?");
     if (confirmation) {
         window.location.href = 'prosesUpdatedStatus.php?id=' + id_transaksi + '&status=' + update_status;
     }
